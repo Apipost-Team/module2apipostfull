@@ -1,0 +1,138 @@
+{
+  "project": {
+    "name": "12321412",
+    "description": ""
+  },
+  "apis": [{
+    "name": "目录1",
+    "target_type": "folder",
+    "description": "Folder for 目录1",
+    "children": [{
+      "name": "目录1—1",
+      "target_type": "folder",
+      "description": "Folder for 目录1—1",
+      "children": [{
+        "name": "header",
+        "target_type": "api",
+        "url": "999998",
+        "method": "GET",
+        "request": {
+          "description": "header 说明",
+          "header": [{
+            "is_checked": "1",
+            "type": "Text",
+            "key": "header",
+            "value": "12321412",
+            "not_null": "-1",
+            "description": "1232131",
+            "field_type": ""
+          }]
+        }
+      }, {
+        "name": "aaaa",
+        "target_type": "api",
+        "url": "wqewqewq",
+        "method": "GET",
+        "request": {
+          "description": "sadad"
+        }
+      }]
+    }, {
+      "name": "目录1—1",
+      "target_type": "folder",
+      "description": "Folder for 目录1—1",
+      "children": [{
+        "name": "header",
+        "target_type": "api",
+        "url": "999998",
+        "method": "GET",
+        "request": {
+          "description": "header 说明",
+          "header": [{
+            "is_checked": "1",
+            "type": "Text",
+            "key": "header",
+            "value": "12321412",
+            "not_null": "-1",
+            "description": "1232131",
+            "field_type": ""
+          }]
+        }
+      }, {
+        "name": "aaaa",
+        "target_type": "api",
+        "url": "wqewqewq",
+        "method": "GET",
+        "request": {
+          "description": "sadad"
+        }
+      }]
+    }]
+  }, {
+    "name": "目录1",
+    "target_type": "folder",
+    "description": "Folder for 目录1",
+    "children": [{
+      "name": "目录1—1",
+      "target_type": "folder",
+      "description": "Folder for 目录1—1",
+      "children": [{
+        "name": "header",
+        "target_type": "api",
+        "url": "999998",
+        "method": "GET",
+        "request": {
+          "description": "header 说明",
+          "header": [{
+            "is_checked": "1",
+            "type": "Text",
+            "key": "header",
+            "value": "12321412",
+            "not_null": "-1",
+            "description": "1232131",
+            "field_type": ""
+          }]
+        }
+      }, {
+        "name": "aaaa",
+        "target_type": "api",
+        "url": "wqewqewq",
+        "method": "GET",
+        "request": {
+          "description": "sadad"
+        }
+      }]
+    }, {
+      "name": "目录1—1",
+      "target_type": "folder",
+      "description": "Folder for 目录1—1",
+      "children": [{
+        "name": "header",
+        "target_type": "api",
+        "url": "999998",
+        "method": "GET",
+        "request": {
+          "description": "header 说明",
+          "header": [{
+            "is_checked": "1",
+            "type": "Text",
+            "key": "header",
+            "value": "12321412",
+            "not_null": "-1",
+            "description": "1232131",
+            "field_type": ""
+          }]
+        }
+      }, {
+        "name": "aaaa",
+        "target_type": "api",
+        "url": "wqewqewq",
+        "method": "GET",
+        "request": {
+          "description": "sadad"
+        }
+      }]
+    }]
+  }],
+  "env": []
+}
