@@ -1,6 +1,6 @@
 {
   "name": "module2apipiostfull",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "module2apipiostfull",
   "main": "dist/index.js",
   "files": [
