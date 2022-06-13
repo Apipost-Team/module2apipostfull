@@ -1,11 +1,12 @@
 {
-  "name": "module2apipiostfull",
-  "version": "0.0.2",
-  "description": "module2apipiostfull",
+  "name": "module2apipostfull",
+  "version": "0.0.1",
+  "description": "module2apipostfull",
   "main": "dist/index.js",
   "files": [
     "libs",
-    "icons"
+    "icons",
+    "dist"
   ],
   "scripts": {
     "test": "jest",
