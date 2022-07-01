@@ -10,6 +10,7 @@ const fullProject = (newJson: any, project: any) => {
     description: project?.description || '',
     variable: project.hasOwnProperty('variable') && typeof project.variable == 'object' ? project.variable : {},
     request: {
+      description: project?.request?.description || '',
       auth: project.hasOwnProperty('auth') && typeof project.auth == 'object' ? project.auth : {
         type: 'noauth',
         kv: {
@@ -103,7 +104,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       target_type
     }
     if (target_type == 'folder') {
-      target['name']=api?.name || '新建目录';
+      target['name'] = api?.name || '新建目录';
       target['request'] = {
         auth: request && request.hasOwnProperty('auth') && typeof request.auth == 'object' ? request.auth : {
           type: 'noauth',
@@ -133,7 +134,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       newJson.apis.push(target);
       createApi(api?.children || [], newJson, target.target_id);
     } else if (target_type == 'api') {
-      target['name']=api?.name || '新建接口';
+      target['name'] = api?.name || '新建接口';
       target['request'] = {
         auth: request && request.hasOwnProperty('auth') && typeof request.auth == 'object' ? request.auth : {
           type: 'noauth',
