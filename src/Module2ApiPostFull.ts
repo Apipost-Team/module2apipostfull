@@ -10,7 +10,6 @@ const fullProject = (newJson: any, project: any) => {
     description: project?.description || '',
     variable: project.hasOwnProperty('variable') && typeof project.variable == 'object' ? project.variable : {},
     request: {
-      description: project?.request?.description || '',
       auth: project.hasOwnProperty('auth') && typeof project.auth == 'object' ? project.auth : {
         type: 'noauth',
         kv: {
@@ -159,7 +158,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
         cookie: {
           parameter: []
         },
-        description: api?.description || '',
+        description: api?.request?.description || '',
         event: {
           pre_script: '',
           test: ''
@@ -178,11 +177,11 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       target['response'] = {
         success: {
           parameter: [],
-          raw: ''
+          raw: api?.response?.success?.raw || ''
         },
         error: {
           parameter: [],
-          raw: ''
+          raw: api?.response?.error?.raw || ''
         }
       }
       target['mock'] = '{}';
@@ -204,6 +203,7 @@ export const Module2ApiPostFull = (json: any) => {
   fullProject(newJson, project);
   fullEnv(newJson, env);
   fullAPis(newJson, apis);
+  console.log(JSON.stringify(newJson));
   return newJson;
 }
 
