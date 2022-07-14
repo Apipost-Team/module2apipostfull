@@ -8,51 +8,56 @@ const fullProject = (newJson: any, project: any) => {
     team_id: '-1',
     name: project?.name || '新建项目',
     description: project?.description || '',
-    variable: project.hasOwnProperty('variable') && typeof project.variable == 'object' ? project.variable : {},
-    request: {
-      auth: project.hasOwnProperty('auth') && typeof project.auth == 'object' ? project.auth : {
-        type: 'noauth',
-        kv: {
-          key: '',
-          value: '',
-        },
-        bearer: {
-          key: ''
-        },
-        basic: {
-          username: '',
-          password: ''
-        }
+    details:{
+      script: {
+        pre_script: project?.script?.pre_script || '',
+        pre_script_switch: 1,
+        test: project?.script?.test || '',
+        test_switch: 1,
       },
-      header: [],
-      query: [],
-      body: [],
-      cookie: []
-    },
-    script: {
-      pre_script: project?.script?.pre_script || '',
-      pre_script_switch: 1,
-      test: project?.script?.test || '',
-      test_switch: 1,
-    },
-    globalDescription: {
-      project_id,
-      list: []
+      markList: [{
+        key: 'developing',
+        name: '开发中',
+        is_default:true,
+      },
+      {
+        key: 'complated',
+        name: '已完成',
+        is_default:true,
+      },
+      {
+        key: 'modifying',
+        name: '需修改',
+        is_default:true,
+      },
+      ],
+      globalDescriptionVars:{
+        project_id,
+        list: []
+      },
+      request: {
+        auth: project.hasOwnProperty('auth') && typeof project.auth == 'object' ? project.auth : {
+          type: 'noauth',
+          kv: {
+            key: '',
+            value: '',
+          },
+          bearer: {
+            key: ''
+          },
+          basic: {
+            username: '',
+            password: ''
+          }
+        },
+        header: [],
+        query: [],
+        body: [],
+        cookie: []
+      },
+      variable: project.hasOwnProperty('variable') && typeof project.variable == 'object' ? project.variable : {},
     },
     methods: ['POST', 'GET', 'PUT', 'PATCH', 'DELETE', 'COPY', 'HEAD', 'OPTIONS', 'LINK', 'UNLINK', 'PURGE', 'LOCK', 'UNLOCK', 'PROPFIND', 'VIEW'],
-    mark: [{
-      key: 'developing',
-      name: '开发中',
-    },
-    {
-      key: 'complated',
-      name: '已完成',
-    },
-    {
-      key: 'modifying',
-      name: '需修改',
-    },
-    ],
     is_admin: 1,
     is_manager: 1,
     createTime: dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss')
