@@ -8,30 +8,17 @@ const fullProject = (newJson: any, project: any) => {
     team_id: '-1',
     name: project?.name || '新建项目',
     description: project?.description || '',
-    details:{
+    details: {
       script: {
         pre_script: project?.script?.pre_script || '',
         pre_script_switch: 1,
         test: project?.script?.test || '',
         test_switch: 1,
       },
-      markList: [{
-        key: 'developing',
-        name: '开发中',
-        is_default:true,
-      },
-      {
-        key: 'complated',
-        name: '已完成',
-        is_default:true,
-      },
-      {
-        key: 'modifying',
-        name: '需修改',
-        is_default:true,
-      },
-      ],
-      globalDescriptionVars:{
+      markList: [{ key: 'developing', name: '开发中', color: '#3A86FF', is_default: true },
+      { key: 'complated', name: '已完成', color: '#2BA58F', is_default: true },
+      { key: 'modifying', name: '需修改', color: '#EC4646', is_default: true },],
+      globalDescriptionVars: {
         project_id,
         list: []
       },
