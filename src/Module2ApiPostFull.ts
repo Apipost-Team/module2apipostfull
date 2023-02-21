@@ -151,7 +151,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       method: api.hasOwnProperty('method') ? api.method.toUpperCase() : 'POST',
       parent_id: pid || '0',
       project_id,
-      sort: -1,
+      sort: api?.sort || -1,
       target_id: uuidv4(),
       type_sort: '1',
       version: 1,
