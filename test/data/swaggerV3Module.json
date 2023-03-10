@@ -3,136 +3,612 @@
     "name": "12321412",
     "description": ""
   },
-  "apis": [{
-    "name": "目录1",
-    "target_type": "folder",
-    "description": "Folder for 目录1",
-    "children": [{
-      "name": "目录1—1",
-      "target_type": "folder",
-      "description": "Folder for 目录1—1",
-      "children": [{
-        "name": "header",
-        "target_type": "api",
-        "url": "999998",
-        "method": "GET",
-        "request": {
-          "description": "header 说明",
-          "header": [{
-            "is_checked": "1",
-            "type": "Text",
-            "key": "header",
-            "value": "12321412",
-            "not_null": "-1",
-            "description": "1232131",
-            "field_type": ""
-          }]
-        }
-      }, {
-        "name": "aaaa",
-        "target_type": "api",
-        "url": "wqewqewq",
-        "method": "GET",
-        "request": {
-          "description": "sadad"
-        }
-      }]
-    }, {
-      "name": "目录1—1",
-      "target_type": "folder",
-      "description": "Folder for 目录1—1",
-      "children": [{
-        "name": "header",
-        "target_type": "api",
-        "url": "999998",
-        "method": "GET",
-        "request": {
-          "description": "header 说明",
-          "header": [{
-            "is_checked": "1",
-            "type": "Text",
-            "key": "header",
-            "value": "12321412",
-            "not_null": "-1",
-            "description": "1232131",
-            "field_type": ""
-          }]
-        }
-      }, {
-        "name": "aaaa",
-        "target_type": "api",
-        "url": "wqewqewq",
-        "method": "GET",
-        "request": {
-          "description": "sadad"
-        }
-      }]
-    }]
-  }, {
-    "name": "目录1",
-    "target_type": "folder",
-    "description": "Folder for 目录1",
-    "children": [{
-      "name": "目录1—1",
-      "target_type": "folder",
-      "description": "Folder for 目录1—1",
-      "children": [{
-        "name": "header",
-        "target_type": "api",
-        "url": "999998",
-        "method": "GET",
-        "request": {
-          "description": "header 说明",
-          "header": [{
-            "is_checked": "1",
-            "type": "Text",
-            "key": "header",
-            "value": "12321412",
-            "not_null": "-1",
-            "description": "1232131",
-            "field_type": ""
-          }]
-        }
-      }, {
-        "name": "aaaa",
-        "target_type": "api",
-        "url": "wqewqewq",
-        "method": "GET",
-        "request": {
-          "description": "sadad"
-        }
-      }]
-    }, {
-      "name": "目录1—1",
-      "target_type": "folder",
-      "description": "Folder for 目录1—1",
-      "children": [{
-        "name": "header",
-        "target_type": "api",
-        "url": "999998",
-        "method": "GET",
-        "request": {
-          "description": "header 说明",
-          "header": [{
-            "is_checked": "1",
-            "type": "Text",
-            "key": "header",
-            "value": "12321412",
-            "not_null": "-1",
-            "description": "1232131",
-            "field_type": ""
-          }]
-        }
-      }, {
-        "name": "aaaa",
-        "target_type": "api",
-        "url": "wqewqewq",
-        "method": "GET",
-        "request": {
-          "description": "sadad"
-        }
-      }]
-    }]
-  }],
+  "apis": [
+    {
+        "name": "pet",
+        "target_type": "folder",
+        "description": "Everything about your Pets",
+        "children": [
+            {
+                "name": "Add a new pet to the store",
+                "target_type": "api",
+                "url": "petstore.swagger.io/v2/pet",
+                "method": "POST",
+                "request": {
+                    "description": "",
+                    "header": [
+                        {
+                            "is_checked": "1",
+                            "type": "Text",
+                            "key": "Accept",
+                            "value": "application/xml, application/json",
+                            "not_null": "1",
+                            "description": "",
+                            "field_type": "Text"
+                        },
+                        {
+                            "is_checked": "1",
+                            "type": "Text",
+                            "key": "Content-Type",
+                            "value": "application/json",
+                            "not_null": "1",
+                            "description": "",
+                            "field_type": "Text"
+                        }
+                    ],
+                    "body": {
+                        "mode": "json",
+                        "parameter": [],
+                        "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
+                        "raw_para": [
+                            {
+                                "key": "status",
+                                "value": "",
+                                "description": "pet status in the store",
+                                "not_null": 1,
+                                "field_type": "String",
+                                "type": "Text",
+                                "is_checked": 1
+                            }
+                        ]
+                    }
+                },
+                "response": {
+                    "success": {
+                        "parameter": [
+                            {
+                                "key": "code",
+                                "value": "",
+                                "description": "状态码",
+                                "not_null": 1,
+                                "field_type": "Integer",
+                                "type": "Text",
+                                "is_checked": 1
+                            },
+                            {
+                                "key": "data",
+                                "value": "",
+                                "description": "承载数据",
+                                "not_null": 1,
+                                "field_type": "String",
+                                "type": "Text",
+                                "is_checked": 1
+                            },
+                            {
+                                "key": "msg",
+                                "value": "",
+                                "description": "返回消息",
+                                "not_null": 1,
+                                "field_type": "String",
+                                "type": "Text",
+                                "is_checked": 1
+                            },
+                            {
+                                "key": "success",
+                                "value": "",
+                                "description": "是否成功",
+                                "not_null": 1,
+                                "field_type": "Boolean",
+                                "type": "Text",
+                                "is_checked": 1
+                            }
+                        ],
+                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}"
+                    },
+                    "error": {
+                        "parameter": [],
+                        "raw": ""
+                    },
+                    "6446f2e0-a704-4f36-b5cb-65c66a716d57": {
+                        "expect": {
+                            "name": "失败了啊",
+                            "isDefault": -1,
+                            "code": "502",
+                            "contentType": "json",
+                            "schema": "",
+                            "mock": "",
+                            "verifyType": "schema"
+                        },
+                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}",
+                        "parameter": [
+                            {
+                                "key": "code",
+                                "value": "",
+                                "description": "状态码",
+                                "not_null": 1,
+                                "field_type": "Integer",
+                                "type": "Text",
+                                "is_checked": 1
+                            },
+                            {
+                                "key": "data",
+                                "value": "",
+                                "description": "承载数据",
+                                "not_null": 1,
+                                "field_type": "String",
+                                "type": "Text",
+                                "is_checked": 1
+                            },
+                            {
+                                "key": "msg",
+                                "value": "",
+                                "description": "返回消息",
+                                "not_null": 1,
+                                "field_type": "String",
+                                "type": "Text",
+                                "is_checked": 1
+                            },
+                            {
+                                "key": "success",
+                                "value": "",
+                                "description": "是否成功",
+                                "not_null": 1,
+                                "field_type": "Boolean",
+                                "type": "Text",
+                                "is_checked": 1
+                            }
+                        ]
+                    }
+                },
+                "sort": 1
+            },
+            {
+                "name": "demo",
+                "target_type": "folder",
+                "description": "",
+                "children": [
+                    {
+                        "name": "Update an existing pet",
+                        "target_type": "api",
+                        "url": "petstore.swagger.io/v2/pet",
+                        "method": "PUT",
+                        "request": {
+                            "description": "",
+                            "header": [
+                                {
+                                    "is_checked": "1",
+                                    "type": "Text",
+                                    "key": "Accept",
+                                    "value": "application/xml, application/json",
+                                    "not_null": "1",
+                                    "description": "",
+                                    "field_type": "Text"
+                                },
+                                {
+                                    "is_checked": "1",
+                                    "type": "Text",
+                                    "key": "Content-Type",
+                                    "value": "application/json",
+                                    "not_null": "1",
+                                    "description": "",
+                                    "field_type": "Text"
+                                }
+                            ],
+                            "body": {
+                                "mode": "json",
+                                "parameter": [],
+                                "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
+                                "raw_para": [
+                                    {
+                                        "key": "status",
+                                        "value": "",
+                                        "description": "pet status in the store",
+                                        "not_null": 1,
+                                        "field_type": "String",
+                                        "type": "Text",
+                                        "is_checked": 1
+                                    }
+                                ]
+                            }
+                        },
+                        "response": {
+                            "success": {
+                                "parameter": [],
+                                "raw": ""
+                            },
+                            "error": {
+                                "parameter": [],
+                                "raw": ""
+                            }
+                        },
+                        "sort": 1
+                    }
+                ],
+                "sort": 2
+            },
+            {
+                "name": "Update an existing pet",
+                "target_type": "api",
+                "url": "petstore.swagger.io/v2/pet",
+                "method": "PUT",
+                "request": {
+                    "description": "",
+                    "header": [
+                        {
+                            "is_checked": "1",
+                            "type": "Text",
+                            "key": "Accept",
+                            "value": "application/xml, application/json",
+                            "not_null": "1",
+                            "description": "",
+                            "field_type": "Text"
+                        },
+                        {
+                            "is_checked": "1",
+                            "type": "Text",
+                            "key": "Content-Type",
+                            "value": "application/json",
+                            "not_null": "1",
+                            "description": "",
+                            "field_type": "Text"
+                        }
+                    ],
+                    "body": {
+                        "mode": "json",
+                        "parameter": [],
+                        "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
+                        "raw_para": [
+                            {
+                                "key": "status",
+                                "value": "",
+                                "description": "pet status in the store",
+                                "not_null": 1,
+                                "field_type": "String",
+                                "type": "Text",
+                                "is_checked": 1
+                            }
+                        ]
+                    }
+                },
+                "response": {
+                    "success": {
+                        "parameter": [],
+                        "raw": ""
+                    },
+                    "error": {
+                        "parameter": [],
+                        "raw": ""
+                    }
+                },
+                "sort": 3
+            }
+        ],
+        "sort": 1
+    },
+    {
+        "name": "demo",
+        "target_type": "folder",
+        "description": "",
+        "children": [
+            {
+                "name": "pet",
+                "target_type": "folder",
+                "description": "Everything about your Pets",
+                "children": [
+                    {
+                        "name": "d1",
+                        "target_type": "folder",
+                        "description": "",
+                        "children": [
+                            {
+                                "name": "Add a new pet to the store",
+                                "target_type": "api",
+                                "url": "petstore.swagger.io/v2/pet",
+                                "method": "POST",
+                                "request": {
+                                    "description": "",
+                                    "header": [
+                                        {
+                                            "is_checked": "1",
+                                            "type": "Text",
+                                            "key": "Accept",
+                                            "value": "application/xml, application/json",
+                                            "not_null": "1",
+                                            "description": "",
+                                            "field_type": "Text"
+                                        },
+                                        {
+                                            "is_checked": "1",
+                                            "type": "Text",
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "not_null": "1",
+                                            "description": "",
+                                            "field_type": "Text"
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "json",
+                                        "parameter": [],
+                                        "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
+                                        "raw_para": [
+                                            {
+                                                "key": "status",
+                                                "value": "",
+                                                "description": "pet status in the store",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": {
+                                    "success": {
+                                        "parameter": [
+                                            {
+                                                "key": "code",
+                                                "value": "",
+                                                "description": "状态码",
+                                                "not_null": 1,
+                                                "field_type": "Integer",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "data",
+                                                "value": "",
+                                                "description": "承载数据",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "msg",
+                                                "value": "",
+                                                "description": "返回消息",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "success",
+                                                "value": "",
+                                                "description": "是否成功",
+                                                "not_null": 1,
+                                                "field_type": "Boolean",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            }
+                                        ],
+                                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}"
+                                    },
+                                    "error": {
+                                        "parameter": [],
+                                        "raw": ""
+                                    },
+                                    "6446f2e0-a704-4f36-b5cb-65c66a716d57": {
+                                        "expect": {
+                                            "name": "失败了啊",
+                                            "isDefault": -1,
+                                            "code": "502",
+                                            "contentType": "json",
+                                            "schema": "",
+                                            "mock": "",
+                                            "verifyType": "schema"
+                                        },
+                                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}",
+                                        "parameter": [
+                                            {
+                                                "key": "code",
+                                                "value": "",
+                                                "description": "状态码",
+                                                "not_null": 1,
+                                                "field_type": "Integer",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "data",
+                                                "value": "",
+                                                "description": "承载数据",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "msg",
+                                                "value": "",
+                                                "description": "返回消息",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "success",
+                                                "value": "",
+                                                "description": "是否成功",
+                                                "not_null": 1,
+                                                "field_type": "Boolean",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            }
+                                        ]
+                                    }
+                                },
+                                "sort": 1
+                            }
+                        ],
+                        "sort": 1
+                    }
+                ],
+                "sort": 1
+            }
+        ],
+        "sort": 2
+    },
+    {
+        "name": "d1",
+        "target_type": "folder",
+        "description": "",
+        "children": [
+            {
+                "name": "demo",
+                "target_type": "folder",
+                "description": "",
+                "children": [
+                    {
+                        "name": "pet",
+                        "target_type": "folder",
+                        "description": "Everything about your Pets",
+                        "children": [
+                            {
+                                "name": "Add a new pet to the store",
+                                "target_type": "api",
+                                "url": "petstore.swagger.io/v2/pet",
+                                "method": "POST",
+                                "request": {
+                                    "description": "",
+                                    "header": [
+                                        {
+                                            "is_checked": "1",
+                                            "type": "Text",
+                                            "key": "Accept",
+                                            "value": "application/xml, application/json",
+                                            "not_null": "1",
+                                            "description": "",
+                                            "field_type": "Text"
+                                        },
+                                        {
+                                            "is_checked": "1",
+                                            "type": "Text",
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "not_null": "1",
+                                            "description": "",
+                                            "field_type": "Text"
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "json",
+                                        "parameter": [],
+                                        "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
+                                        "raw_para": [
+                                            {
+                                                "key": "status",
+                                                "value": "",
+                                                "description": "pet status in the store",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            }
+                                        ]
+                                    }
+                                },
+                                "response": {
+                                    "success": {
+                                        "parameter": [
+                                            {
+                                                "key": "code",
+                                                "value": "",
+                                                "description": "状态码",
+                                                "not_null": 1,
+                                                "field_type": "Integer",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "data",
+                                                "value": "",
+                                                "description": "承载数据",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "msg",
+                                                "value": "",
+                                                "description": "返回消息",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "success",
+                                                "value": "",
+                                                "description": "是否成功",
+                                                "not_null": 1,
+                                                "field_type": "Boolean",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            }
+                                        ],
+                                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}"
+                                    },
+                                    "error": {
+                                        "parameter": [],
+                                        "raw": ""
+                                    },
+                                    "6446f2e0-a704-4f36-b5cb-65c66a716d57": {
+                                        "expect": {
+                                            "name": "失败了啊",
+                                            "isDefault": -1,
+                                            "code": "502",
+                                            "contentType": "json",
+                                            "schema": "",
+                                            "mock": "",
+                                            "verifyType": "schema"
+                                        },
+                                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}",
+                                        "parameter": [
+                                            {
+                                                "key": "code",
+                                                "value": "",
+                                                "description": "状态码",
+                                                "not_null": 1,
+                                                "field_type": "Integer",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "data",
+                                                "value": "",
+                                                "description": "承载数据",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "msg",
+                                                "value": "",
+                                                "description": "返回消息",
+                                                "not_null": 1,
+                                                "field_type": "String",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            },
+                                            {
+                                                "key": "success",
+                                                "value": "",
+                                                "description": "是否成功",
+                                                "not_null": 1,
+                                                "field_type": "Boolean",
+                                                "type": "Text",
+                                                "is_checked": 1
+                                            }
+                                        ]
+                                    }
+                                },
+                                "sort": 1
+                            }
+                        ],
+                        "sort": 1
+                    }
+                ],
+                "sort": 1
+            }
+        ],
+        "sort": 3
+    }
+],
   "env": []
 }

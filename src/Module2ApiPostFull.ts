@@ -363,7 +363,8 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
         error: {
           parameter: [],
           raw: api?.response?.error?.raw || ''
-        }
+        },
+        ...(api?.response || {})
       }
       target['mock'] = '{}';
       target['mock_url'] = '';
