@@ -7,7 +7,7 @@ const fullProject = (newJson: any, project: any) => {
   let markList = [];
   if (project?.markList instanceof Array && project.markList.length > 0) {
     for (const mark of project.markList) {
-      markList.push({ key: uuidv4(), name: mark?.name || mark?.key || '自定义状态', color: '#f47373' })
+      markList.push({ old_key: mark?.key, key: uuidv4(), name: mark?.name || mark?.key || '自定义状态', color: '#f47373' })
     }
   }
 
@@ -141,7 +141,7 @@ const fullEnv = (newJson: any, env: any) => {
   }
 }
 const createApi = (items: any[], newJson: any, pid: string = '0') => {
-  const { project_id } = newJson.project || {}
+  const { project_id , details } = newJson.project || {}
   items.forEach(api => {
     const { request } = api || {};
     let target_type = 'api';
@@ -152,12 +152,20 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
         target_type = 'api';
       }
     }
+    let newMark = api?.mark;
+    if(details?.markList instanceof Array){
+      let old_mark = details.markList.find((item:any)=>item?.old_key === api?.mark);
+      if(old_mark != undefined && Object.prototype.toString.call(old_mark) === '[object Object]'){
+        newMark= old_mark?.key || api?.mark || 'developing'
+      }
+    }
+   
     let target: any = {
       update_day: parseInt(String(new Date(new Date().toLocaleDateString()).getTime() / 1000), 10),
       update_dtime: Date.parse(String(new Date())) / 1000,
       create_dtime: Date.parse(String(new Date())) / 1000,
       is_changed: -1,
-      mark: api?.mark || 'developing',
+      mark: newMark,
       method: api.hasOwnProperty('method') ? api.method.toUpperCase() : 'POST',
       parent_id: pid || '0',
       project_id,
