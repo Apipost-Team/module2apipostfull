@@ -417,7 +417,7 @@ const createModel=(items: any[], newJson: any, pid: string = '0')=>{
       target['name'] = model?.name || '新建目录';
       newJson.dataModel.push(target);
       createModel(model?.children || [], newJson, target.model_id);
-    } else if (model_type == 'api') {
+    } else if (model_type == 'model') {
       target['name'] = model?.name || '新建接口';
       target['displayName'] = model?.displayName || '新建接口';
       target['schema'] = model?.schema || {};
