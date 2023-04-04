@@ -409,7 +409,7 @@ const createModel=(items: any[], newJson: any, pid: string = '0')=>{
       project_id,
       sort: model?.sort || -1,
       model_id: uuidv4(),
-      old_model_id: model?.id || "",
+      old_model_id: model?.model_id || "",
       description: model?.description || '',
       version: 1,
     }
