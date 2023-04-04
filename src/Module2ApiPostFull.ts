@@ -389,7 +389,7 @@ const fullAPis = (newJson: any, apis: any) => {
     createApi(apis, newJson, '0');
   }
 }
-const createModel=(items: any[], newJson: any, pid: string = '0')=>{
+const createModel = (items: any[], newJson: any, pid: string = '0') => {
   const { project_id } = newJson.project || {};
   items.forEach(model => {
     let model_type = 'model';
@@ -425,20 +425,21 @@ const createModel=(items: any[], newJson: any, pid: string = '0')=>{
     }
   })
 }
-const fullDataModel =(newJson: any, dataModel: any)=>{
+const fullDataModel = (newJson: any, dataModel: any) => {
   if (dataModel && dataModel instanceof Array && dataModel.length > 0) {
     newJson['dataModel'] = [];
     createModel(dataModel, newJson, '0');
-    if(newJson.dataModel.length > 0){
+    if (newJson.dataModel.length > 0) {
       try {
-        let dataModelStr= JSON.stringify(newJson.dataModel);
+        let dataModelStr = JSON.stringify(newJson.dataModel);
         for (const model of newJson.dataModel) {
-          if(model?.old_model_id){
-            dataModelStr= dataModelStr.replace(`/\"${model.old_model_id}\"/g`,`\"${model.model_id}\"`);
+          if (model?.old_model_id) {
+            let reg = new RegExp(model.old_model_id, 'g')
+            dataModelStr = dataModelStr.replace(reg, model.model_id);
           }
         }
         newJson.dataModel = JSON.parse(dataModelStr);
-      } catch (error) {}
+      } catch (error) { }
     }
   }
 }
