@@ -3,6 +3,14 @@ import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
 const fullProject = (newJson: any, project: any) => {
   let project_id = uuidv4();
+
+  let markList = [];
+  if (project?.markList instanceof Array && project.markList.length > 0) {
+    for (const mark of project.markList) {
+      markList.push({ key: uuidv4(), name: mark?.name || mark?.key || '自定义状态', color: '#f47373' })
+    }
+  }
+
   newJson['project'] = {
     project_id,
     team_id: '-1',
@@ -17,7 +25,9 @@ const fullProject = (newJson: any, project: any) => {
       },
       markList: [{ key: 'developing', name: '开发中', color: '#3A86FF', is_default: true },
       { key: 'complated', name: '已完成', color: '#2BA58F', is_default: true },
-      { key: 'modifying', name: '需修改', color: '#EC4646', is_default: true },],
+      { key: 'modifying', name: '需修改', color: '#EC4646', is_default: true },
+      ...markList,
+      ],
       globalDescriptionVars: {
         project_id,
         list: []
@@ -100,12 +110,12 @@ const fullProject = (newJson: any, project: any) => {
             token: '',
           },
         },
-        header: [],
-        query: [],
-        body: [],
+        header: project.hasOwnProperty('header') && project.header instanceof Array ? project.header : [],
+        query: project.hasOwnProperty('query') && project.query instanceof Array ? project.query : [],
+        body: project.hasOwnProperty('body') && project.body instanceof Array ? project.body : [],
         cookie: []
       },
-      variable: project.hasOwnProperty('variable') && typeof project.variable == 'object' ? project.variable : {},
+      globalVars: project.hasOwnProperty('globalVars') && typeof project.globalVars == 'object' ? project.globalVars : {},
     },
     methods: ['POST', 'GET', 'PUT', 'PATCH', 'DELETE', 'COPY', 'HEAD', 'OPTIONS', 'LINK', 'UNLINK', 'PURGE', 'LOCK', 'UNLOCK', 'PROPFIND', 'VIEW'],
     is_admin: 1,
@@ -243,9 +253,9 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
         query: request && request.hasOwnProperty('query') && request.query instanceof Array ? request.query : [],
       }
       target['script'] = {
-        pre_script: '',
+        pre_script: request?.srcipt?.pre_script || '',
         pre_script_switch: 1,
-        test: '',
+        test: request?.srcipt?.test || '',
         test_switch: 1,
       }
       newJson.apis.push(target);
@@ -341,8 +351,8 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
         },
         description: api?.request?.description || '',
         event: {
-          pre_script: '',
-          test: ''
+          pre_script: request?.event?.pre_script || '',
+          test: request?.event?.test || ''
         },
         header: {
           parameter: request && request.hasOwnProperty('header') && request.header instanceof Array ? request.header : []
@@ -379,12 +389,66 @@ const fullAPis = (newJson: any, apis: any) => {
     createApi(apis, newJson, '0');
   }
 }
+const createModel=(items: any[], newJson: any, pid: string = '0')=>{
+  const { project_id } = newJson.project || {};
+  items.forEach(model => {
+    let model_type = 'model';
+    if (model.hasOwnProperty('model_type')) {
+      if (model.model_type == 'folder' || (model.hasOwnProperty('children') && model.children instanceof Array)) {
+        model_type = 'folder';
+      } else {
+        model_type = 'model';
+      }
+    }
+    let target: any = {
+      update_day: parseInt(String(new Date(new Date().toLocaleDateString()).getTime() / 1000), 10),
+      updated_time: Date.parse(String(new Date())) / 1000,
+      created_time: Date.parse(String(new Date())) / 1000,
+      is_changed: -1,
+      parent_id: pid || '0',
+      project_id,
+      sort: model?.sort || -1,
+      model_id: uuidv4(),
+      old_model_id: model?.id || "",
+      description: model?.description || '',
+      version: 1,
+    }
+    if (model_type == 'folder') {
+      target['name'] = model?.name || '新建目录';
+      newJson.dataModel.push(target);
+      createModel(model?.children || [], newJson, target.model_id);
+    } else if (model_type == 'api') {
+      target['name'] = model?.name || '新建接口';
+      target['displayName'] = model?.displayName || '新建接口';
+      target['schema'] = model?.schema || {};
+      newJson.dataModel.push(target);
+    }
+  })
+}
+const fullDataModel =(newJson: any, dataModel: any)=>{
+  if (dataModel && dataModel instanceof Array && dataModel.length > 0) {
+    newJson['dataModel'] = [];
+    createModel(dataModel, newJson, '0');
+    if(newJson.dataModel.length > 0){
+      try {
+        let dataModelStr= JSON.stringify(newJson.dataModel);
+        for (const model of newJson.dataModel) {
+          if(model?.old_model_id){
+            dataModelStr= dataModelStr.replace(`/\"${model.old_model_id}\"/g`,`\"${model.model_id}\"`);
+          }
+        }
+        newJson.dataModel = JSON.parse(dataModelStr);
+      } catch (error) {}
+    }
+  }
+}
 export const Module2ApiPostFull = (json: any) => {
-  const { project, env, apis } = json;
+  const { project, env, apis, dataModel } = json;
   let newJson = {};
   fullProject(newJson, project);
   fullEnv(newJson, env);
   fullAPis(newJson, apis);
+  fullDataModel(newJson, dataModel);
   return newJson;
 }
 
