@@ -169,7 +169,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       target_type
     }
     if(target_type === 'sample'){
-      target_type['example_type'] = 'api';
+      target['example_type'] = 'api';
     }
     if (target_type == 'folder') {
       target['name'] = api?.name || '新建目录';
