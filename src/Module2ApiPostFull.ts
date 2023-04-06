@@ -147,7 +147,11 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
     let target_type = 'api';
     if (api.hasOwnProperty('target_type')) {
       if (api.target_type == 'folder' || (api.hasOwnProperty('children') && api.children instanceof Array)) {
-        target_type = 'folder';
+        if(api.target_type == 'sample'){
+          target_type = 'sample';
+        }else{
+          target_type = 'folder';
+        }
       } else {
         target_type = 'api';
       }
@@ -268,7 +272,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       }
       newJson.apis.push(target);
       createApi(api?.children || [], newJson, target.target_id);
-    } else if (target_type == 'api') {
+    } else if (target_type == 'api' || target_type == 'sample') {
       target['name'] = api?.name || '新建接口';
       target['request'] = {
         auth: request && request.hasOwnProperty('auth') && typeof request.auth == 'object' ? request.auth : {
@@ -388,6 +392,9 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       target['mock_url'] = '';
       target['url'] = api?.url || '';
       newJson.apis.push(target);
+      if(target_type == 'api'){
+        createApi(api?.children || [], newJson, target.target_id);
+      }
     }
   })
 }
