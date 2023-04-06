@@ -144,18 +144,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
   const { project_id , details } = newJson.project || {}
   items.forEach(api => {
     const { request } = api || {};
-    let target_type = 'api';
-    if (api.hasOwnProperty('target_type')) {
-      if (api.target_type == 'folder' || (api.hasOwnProperty('children') && api.children instanceof Array)) {
-        if(api.target_type == 'sample'){
-          target_type = 'sample';
-        }else{
-          target_type = 'folder';
-        }
-      } else {
-        target_type = 'api';
-      }
-    }
+    let target_type = api?.target_type || 'api';
     let newMark = api?.mark;
     if(details?.markList instanceof Array){
       let old_mark = details.markList.find((item:any)=>item?.old_key === api?.mark);
