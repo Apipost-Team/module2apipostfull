@@ -440,12 +440,15 @@ const fullDataModel = (newJson: any, dataModel: any) => {
     if (newJson.dataModel.length > 0) {
       try {
         let dataModelStr = JSON.stringify(newJson.dataModel);
+        let apisStr = JSON.stringify(newJson.apis);
         for (const model of newJson.dataModel) {
           if (model?.old_model_id) {
             let reg = new RegExp(model.old_model_id, 'g')
             dataModelStr = dataModelStr.replace(reg, model.model_id);
+            apisStr= apisStr.replace(reg, model.model_id);
           }
         }
+        newJson.apis = JSON.parse(apisStr);
         newJson.dataModel = JSON.parse(dataModelStr);
       } catch (error) { }
     }
