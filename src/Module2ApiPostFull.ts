@@ -427,7 +427,7 @@ const createModel = (items: any[], newJson: any, pid: string = '0') => {
       createModel(model?.children || [], newJson, target.model_id);
     } else if (model_type == 'model') {
       target['name'] = model?.name || '新建接口';
-      target['display_name'] = model?.displayName || '新建接口';
+      target['display_name'] = model?.displayName || '';
       target['schema'] = model?.schema || {};
       newJson.dataModel.push(target);
     }
