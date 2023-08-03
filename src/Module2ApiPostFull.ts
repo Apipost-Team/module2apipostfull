@@ -266,6 +266,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       createApi(api?.children || [], newJson, target.target_id);
     } else if (target_type == 'api' || target_type == 'sample') {
       target['name'] = api?.name || '新建接口';
+      target.tags = api?.tags || [];
       target['request'] = {
         auth: request && request.hasOwnProperty('auth') && typeof request.auth == 'object' ? request.auth : {
           type: 'noauth',
