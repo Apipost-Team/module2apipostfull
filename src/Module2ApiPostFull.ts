@@ -444,9 +444,9 @@ const fullDataModel = (newJson: any, dataModel: any) => {
         let apisStr = JSON.stringify(newJson.apis);
         for (const model of newJson.dataModel) {
           if (model?.old_model_id) {
-            let reg = new RegExp(`\"${model.old_model_id}\"`, 'g')
+            let reg = new RegExp(`"${model.old_model_id}"`, 'g')
             dataModelStr = dataModelStr.replace(reg, `"${model.model_id}"`);
-            apisStr= apisStr.replace(reg, model.model_id);
+            apisStr= apisStr.replace(reg, `"${model.model_id}"`);
           }
         }
         newJson.apis = JSON.parse(apisStr);
