@@ -257,9 +257,9 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
         query: request && request.hasOwnProperty('query') && request.query instanceof Array ? request.query : [],
       }
       target['script'] = {
-        pre_script: request?.srcipt?.pre_script || '',
+        pre_script: request?.script?.pre_script || '',
         pre_script_switch: 1,
-        test: request?.srcipt?.test || '',
+        test: request?.script?.test || '',
         test_switch: 1,
       }
       newJson.apis.push(target);
