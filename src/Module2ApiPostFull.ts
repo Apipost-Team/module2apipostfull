@@ -257,15 +257,16 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
         query: request && request.hasOwnProperty('query') && request.query instanceof Array ? request.query : [],
       }
       target['script'] = {
-        pre_script: request?.srcipt?.pre_script || '',
+        pre_script: request?.script?.pre_script || '',
         pre_script_switch: 1,
-        test: request?.srcipt?.test || '',
+        test: request?.script?.test || '',
         test_switch: 1,
       }
       newJson.apis.push(target);
       createApi(api?.children || [], newJson, target.target_id);
     } else if (target_type == 'api' || target_type == 'sample') {
       target['name'] = api?.name || '新建接口';
+      target.tags = api?.tags || [];
       target['request'] = {
         auth: request && request.hasOwnProperty('auth') && typeof request.auth == 'object' ? request.auth : {
           type: 'noauth',
@@ -678,9 +679,9 @@ const fullDataModel = (newJson: any, dataModel: any) => {
         let apisStr = JSON.stringify(newJson.apis);
         for (const model of newJson.dataModel) {
           if (model?.old_model_id) {
-            let reg = new RegExp(model.old_model_id, 'g')
-            dataModelStr = dataModelStr.replace(reg, model.model_id);
-            apisStr = apisStr.replace(reg, model.model_id);
+            let reg = new RegExp(`"${model.old_model_id}"`, 'g')
+            dataModelStr = dataModelStr.replace(reg, `"${model.model_id}"`);
+            apisStr= apisStr.replace(reg, `"${model.model_id}"`);
           }
         }
         newJson.apis = JSON.parse(apisStr);
