@@ -7,12 +7,15 @@ describe('works', () => {
   let result = true;
   try {
     Module2ApiPostFull(swaggerV3Module)
+    // console.log(Module2ApiPostFull(swaggerV3Module,true));
+    
   } catch (error) {
     console.log("error", error);
     result = false;
   }
   it('Module2ApiPostFull test', () => {
-    // console.log("Module2ApiPostFullModule2ApiPostFull",JSON.stringify(Module2ApiPostFull(swaggerV3Module)));
+    
+    console.log("Module2ApiPostFullModule2ApiPostFull",JSON.stringify(Module2ApiPostFull(swaggerV3Module,true).apis));
     expect(result).toEqual(true);
   });
 });

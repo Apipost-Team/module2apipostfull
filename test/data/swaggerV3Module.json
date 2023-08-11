@@ -1,614 +1,2242 @@
 {
-  "project": {
-    "name": "12321412",
-    "description": ""
-  },
+  "project": { "name": "新建项目", "description": "" },
   "apis": [
     {
-        "name": "pet",
-        "target_type": "folder",
-        "description": "Everything about your Pets",
-        "children": [
-            {
-                "name": "Add a new pet to the store",
-                "target_type": "api",
-                "url": "petstore.swagger.io/v2/pet",
-                "method": "POST",
-                "request": {
-                    "description": "",
-                    "header": [
-                        {
-                            "is_checked": "1",
-                            "type": "Text",
-                            "key": "Accept",
-                            "value": "application/xml, application/json",
-                            "not_null": "1",
-                            "description": "",
-                            "field_type": "Text"
-                        },
-                        {
-                            "is_checked": "1",
-                            "type": "Text",
-                            "key": "Content-Type",
-                            "value": "application/json",
-                            "not_null": "1",
-                            "description": "",
-                            "field_type": "Text"
-                        }
-                    ],
-                    "body": {
-                        "mode": "json",
-                        "parameter": [],
-                        "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
-                        "raw_para": [
-                            {
-                                "key": "status",
-                                "value": "",
-                                "description": "pet status in the store",
-                                "not_null": 1,
-                                "field_type": "String",
-                                "type": "Text",
-                                "is_checked": 1
-                            }
-                        ]
-                    }
-                },
-                "response": {
-                    "success": {
-                        "parameter": [
-                            {
-                                "key": "code",
-                                "value": "",
-                                "description": "状态码",
-                                "not_null": 1,
-                                "field_type": "Integer",
-                                "type": "Text",
-                                "is_checked": 1
-                            },
-                            {
-                                "key": "data",
-                                "value": "",
-                                "description": "承载数据",
-                                "not_null": 1,
-                                "field_type": "String",
-                                "type": "Text",
-                                "is_checked": 1
-                            },
-                            {
-                                "key": "msg",
-                                "value": "",
-                                "description": "返回消息",
-                                "not_null": 1,
-                                "field_type": "String",
-                                "type": "Text",
-                                "is_checked": 1
-                            },
-                            {
-                                "key": "success",
-                                "value": "",
-                                "description": "是否成功",
-                                "not_null": 1,
-                                "field_type": "Boolean",
-                                "type": "Text",
-                                "is_checked": 1
-                            }
-                        ],
-                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}"
-                    },
-                    "error": {
-                        "parameter": [],
-                        "raw": ""
-                    },
-                    "6446f2e0-a704-4f36-b5cb-65c66a716d57": {
-                        "expect": {
-                            "name": "失败了啊",
-                            "isDefault": -1,
-                            "code": "502",
-                            "contentType": "json",
-                            "schema": "",
-                            "mock": "",
-                            "verifyType": "schema"
-                        },
-                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}",
-                        "parameter": [
-                            {
-                                "key": "code",
-                                "value": "",
-                                "description": "状态码",
-                                "not_null": 1,
-                                "field_type": "Integer",
-                                "type": "Text",
-                                "is_checked": 1
-                            },
-                            {
-                                "key": "data",
-                                "value": "",
-                                "description": "承载数据",
-                                "not_null": 1,
-                                "field_type": "String",
-                                "type": "Text",
-                                "is_checked": 1
-                            },
-                            {
-                                "key": "msg",
-                                "value": "",
-                                "description": "返回消息",
-                                "not_null": 1,
-                                "field_type": "String",
-                                "type": "Text",
-                                "is_checked": 1
-                            },
-                            {
-                                "key": "success",
-                                "value": "",
-                                "description": "是否成功",
-                                "not_null": 1,
-                                "field_type": "Boolean",
-                                "type": "Text",
-                                "is_checked": 1
-                            }
-                        ]
-                    }
-                },
-                "sort": 1
+      "name": "后端开放API-卡片市场",
+      "target_type": "folder",
+      "description": "",
+      "children": [
+        {
+          "name": "[openapi]卡片市场列表",
+          "target_type": "api",
+          "tags": [],
+          "url": "openapi/v1/cph4/card/mark",
+          "method": "GET",
+          "request": {
+            "description": "",
+            "query": [
+              {
+                "is_checked": "1",
+                "type": "Text",
+                "key": "current",
+                "value": "",
+                "not_null": "-1",
+                "description": "页码",
+                "field_type": "Text"
+              },
+              {
+                "is_checked": "1",
+                "type": "Text",
+                "key": "fieldId",
+                "value": "",
+                "not_null": "-1",
+                "description": "领域",
+                "field_type": "Text"
+              },
+              {
+                "is_checked": "1",
+                "type": "Text",
+                "key": "markSort",
+                "value": "",
+                "not_null": "-1",
+                "description": "是否按点赞数量排序; asc ：正序   desc ：倒序",
+                "field_type": "Text"
+              },
+              {
+                "is_checked": "1",
+                "type": "Text",
+                "key": "name",
+                "value": "",
+                "not_null": "-1",
+                "description": "卡片名称",
+                "field_type": "Text"
+              },
+              {
+                "is_checked": "1",
+                "type": "Text",
+                "key": "pageSize",
+                "value": "",
+                "not_null": "-1",
+                "description": "每页条数",
+                "field_type": "Text"
+              },
+              {
+                "is_checked": "1",
+                "type": "Text",
+                "key": "timeSort",
+                "value": "",
+                "not_null": "-1",
+                "description": "是否按发布时间排序;asc ：正序   desc ：倒序",
+                "field_type": "Text"
+              }
+            ]
+          },
+          "response": {
+            "success": {
+              "parameter": [],
+              "raw": "",
+              "expect": {
+                "name": "成功",
+                "isDefault": 1,
+                "code": "200",
+                "contentType": "json",
+                "schema": {},
+                "mock": "",
+                "verifyType": "schema"
+              }
             },
-            {
-                "name": "demo",
-                "target_type": "folder",
-                "description": "",
-                "children": [
-                    {
-                        "name": "Update an existing pet",
-                        "target_type": "api",
-                        "url": "petstore.swagger.io/v2/pet",
-                        "method": "PUT",
-                        "request": {
-                            "description": "",
-                            "header": [
-                                {
-                                    "is_checked": "1",
-                                    "type": "Text",
-                                    "key": "Accept",
-                                    "value": "application/xml, application/json",
-                                    "not_null": "1",
-                                    "description": "",
-                                    "field_type": "Text"
-                                },
-                                {
-                                    "is_checked": "1",
-                                    "type": "Text",
-                                    "key": "Content-Type",
-                                    "value": "application/json",
-                                    "not_null": "1",
-                                    "description": "",
-                                    "field_type": "Text"
-                                }
-                            ],
-                            "body": {
-                                "mode": "json",
-                                "parameter": [],
-                                "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
-                                "raw_para": [
-                                    {
-                                        "key": "status",
-                                        "value": "",
-                                        "description": "pet status in the store",
-                                        "not_null": 1,
-                                        "field_type": "String",
-                                        "type": "Text",
-                                        "is_checked": 1
-                                    }
-                                ]
-                            }
-                        },
-                        "response": {
-                            "success": {
-                                "parameter": [],
-                                "raw": ""
-                            },
-                            "error": {
-                                "parameter": [],
-                                "raw": ""
-                            }
-                        },
-                        "sort": 1
-                    }
-                ],
-                "sort": 2
+            "error": { "parameter": [], "raw": "" },
+            "0919e10d-63ab-4617-98eb-cda8b3b94617": {
+              "expect": {
+                "name": "OK",
+                "isDefault": -1,
+                "code": "200",
+                "contentType": "json",
+                "schema": "",
+                "mock": "",
+                "verifyType": "schema"
+              },
+              "raw": "",
+              "parameter": []
             },
-            {
-                "name": "Update an existing pet",
-                "target_type": "api",
-                "url": "petstore.swagger.io/v2/pet",
-                "method": "PUT",
-                "request": {
-                    "description": "",
-                    "header": [
-                        {
-                            "is_checked": "1",
-                            "type": "Text",
-                            "key": "Accept",
-                            "value": "application/xml, application/json",
-                            "not_null": "1",
-                            "description": "",
-                            "field_type": "Text"
-                        },
-                        {
-                            "is_checked": "1",
-                            "type": "Text",
-                            "key": "Content-Type",
-                            "value": "application/json",
-                            "not_null": "1",
-                            "description": "",
-                            "field_type": "Text"
-                        }
-                    ],
-                    "body": {
-                        "mode": "json",
-                        "parameter": [],
-                        "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
-                        "raw_para": [
-                            {
-                                "key": "status",
-                                "value": "",
-                                "description": "pet status in the store",
-                                "not_null": 1,
-                                "field_type": "String",
-                                "type": "Text",
-                                "is_checked": 1
-                            }
-                        ]
-                    }
-                },
-                "response": {
-                    "success": {
-                        "parameter": [],
-                        "raw": ""
-                    },
-                    "error": {
-                        "parameter": [],
-                        "raw": ""
-                    }
-                },
-                "sort": 3
+            "71b214d2-cca5-42a7-b572-71083897e5fb": {
+              "expect": {
+                "name": "Unauthorized",
+                "isDefault": -1,
+                "code": "401",
+                "contentType": "json",
+                "schema": "",
+                "mock": "",
+                "verifyType": "schema"
+              },
+              "raw": "",
+              "parameter": []
+            },
+            "903d407d-818e-46ba-b623-06d596fc6972": {
+              "expect": {
+                "name": "Forbidden",
+                "isDefault": -1,
+                "code": "403",
+                "contentType": "json",
+                "schema": "",
+                "mock": "",
+                "verifyType": "schema"
+              },
+              "raw": "",
+              "parameter": []
+            },
+            "07268db1-4fb5-41fb-8eee-a32a54074455": {
+              "expect": {
+                "name": "Not Found",
+                "isDefault": -1,
+                "code": "404",
+                "contentType": "json",
+                "schema": "",
+                "mock": "",
+                "verifyType": "schema"
+              },
+              "raw": "",
+              "parameter": []
             }
-        ],
-        "sort": 1
-    },
-    {
-        "name": "demo",
-        "target_type": "folder",
-        "description": "",
-        "children": [
-            {
-                "name": "pet",
-                "target_type": "folder",
-                "description": "Everything about your Pets",
-                "children": [
-                    {
-                        "name": "d1",
-                        "target_type": "folder",
-                        "description": "",
-                        "children": [
-                            {
-                                "name": "Add a new pet to the store",
-                                "target_type": "api",
-                                "url": "petstore.swagger.io/v2/pet",
-                                "method": "POST",
-                                "request": {
-                                    "description": "",
-                                    "header": [
-                                        {
-                                            "is_checked": "1",
-                                            "type": "Text",
-                                            "key": "Accept",
-                                            "value": "application/xml, application/json",
-                                            "not_null": "1",
-                                            "description": "",
-                                            "field_type": "Text"
-                                        },
-                                        {
-                                            "is_checked": "1",
-                                            "type": "Text",
-                                            "key": "Content-Type",
-                                            "value": "application/json",
-                                            "not_null": "1",
-                                            "description": "",
-                                            "field_type": "Text"
-                                        }
-                                    ],
-                                    "body": {
-                                        "mode": "json",
-                                        "parameter": [],
-                                        "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
-                                        "raw_para": [
-                                            {
-                                                "key": "status",
-                                                "value": "",
-                                                "description": "pet status in the store",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            }
-                                        ]
-                                    }
-                                },
-                                "response": {
-                                    "success": {
-                                        "parameter": [
-                                            {
-                                                "key": "code",
-                                                "value": "",
-                                                "description": "状态码",
-                                                "not_null": 1,
-                                                "field_type": "Integer",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "data",
-                                                "value": "",
-                                                "description": "承载数据",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "msg",
-                                                "value": "",
-                                                "description": "返回消息",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "success",
-                                                "value": "",
-                                                "description": "是否成功",
-                                                "not_null": 1,
-                                                "field_type": "Boolean",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            }
-                                        ],
-                                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}"
-                                    },
-                                    "error": {
-                                        "parameter": [],
-                                        "raw": ""
-                                    },
-                                    "6446f2e0-a704-4f36-b5cb-65c66a716d57": {
-                                        "expect": {
-                                            "name": "失败了啊",
-                                            "isDefault": -1,
-                                            "code": "502",
-                                            "contentType": "json",
-                                            "schema": "",
-                                            "mock": "",
-                                            "verifyType": "schema"
-                                        },
-                                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}",
-                                        "parameter": [
-                                            {
-                                                "key": "code",
-                                                "value": "",
-                                                "description": "状态码",
-                                                "not_null": 1,
-                                                "field_type": "Integer",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "data",
-                                                "value": "",
-                                                "description": "承载数据",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "msg",
-                                                "value": "",
-                                                "description": "返回消息",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "success",
-                                                "value": "",
-                                                "description": "是否成功",
-                                                "not_null": 1,
-                                                "field_type": "Boolean",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            }
-                                        ]
-                                    }
-                                },
-                                "sort": 1
-                            }
-                        ],
-                        "sort": 1
-                    }
-                ],
-                "sort": 1
-            }
-        ],
-        "sort": 2
-    },
-    {
-        "name": "d1",
-        "target_type": "folder",
-        "description": "",
-        "children": [
-            {
-                "name": "demo",
-                "target_type": "folder",
-                "description": "",
-                "children": [
-                    {
-                        "name": "pet",
-                        "target_type": "folder",
-                        "description": "Everything about your Pets",
-                        "children": [
-                            {
-                                "name": "Add a new pet to the store",
-                                "target_type": "api",
-                                "url": "petstore.swagger.io/v2/pet",
-                                "method": "POST",
-                                "request": {
-                                    "description": "",
-                                    "header": [
-                                        {
-                                            "is_checked": "1",
-                                            "type": "Text",
-                                            "key": "Accept",
-                                            "value": "application/xml, application/json",
-                                            "not_null": "1",
-                                            "description": "",
-                                            "field_type": "Text"
-                                        },
-                                        {
-                                            "is_checked": "1",
-                                            "type": "Text",
-                                            "key": "Content-Type",
-                                            "value": "application/json",
-                                            "not_null": "1",
-                                            "description": "",
-                                            "field_type": "Text"
-                                        }
-                                    ],
-                                    "body": {
-                                        "mode": "json",
-                                        "parameter": [],
-                                        "raw": "{\"id\":\"\",\"category\":{\"id\":\"\",\"name\":\"\"},\"name\":\"doggie\",\"photoUrls\":[{}],\"tags\":[{\"id\":\"\",\"name\":\"\"}],\"status\":\"\"}",
-                                        "raw_para": [
-                                            {
-                                                "key": "status",
-                                                "value": "",
-                                                "description": "pet status in the store",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            }
-                                        ]
-                                    }
-                                },
-                                "response": {
-                                    "success": {
-                                        "parameter": [
-                                            {
-                                                "key": "code",
-                                                "value": "",
-                                                "description": "状态码",
-                                                "not_null": 1,
-                                                "field_type": "Integer",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "data",
-                                                "value": "",
-                                                "description": "承载数据",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "msg",
-                                                "value": "",
-                                                "description": "返回消息",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "success",
-                                                "value": "",
-                                                "description": "是否成功",
-                                                "not_null": 1,
-                                                "field_type": "Boolean",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            }
-                                        ],
-                                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}"
-                                    },
-                                    "error": {
-                                        "parameter": [],
-                                        "raw": ""
-                                    },
-                                    "6446f2e0-a704-4f36-b5cb-65c66a716d57": {
-                                        "expect": {
-                                            "name": "失败了啊",
-                                            "isDefault": -1,
-                                            "code": "502",
-                                            "contentType": "json",
-                                            "schema": "",
-                                            "mock": "",
-                                            "verifyType": "schema"
-                                        },
-                                        "raw": "{\"code\":\"\",\"data\":\"\",\"msg\":\"\",\"success\":\"\"}",
-                                        "parameter": [
-                                            {
-                                                "key": "code",
-                                                "value": "",
-                                                "description": "状态码",
-                                                "not_null": 1,
-                                                "field_type": "Integer",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "data",
-                                                "value": "",
-                                                "description": "承载数据",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "msg",
-                                                "value": "",
-                                                "description": "返回消息",
-                                                "not_null": 1,
-                                                "field_type": "String",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            },
-                                            {
-                                                "key": "success",
-                                                "value": "",
-                                                "description": "是否成功",
-                                                "not_null": 1,
-                                                "field_type": "Boolean",
-                                                "type": "Text",
-                                                "is_checked": 1
-                                            }
-                                        ]
-                                    }
-                                },
-                                "sort": 1
-                            }
-                        ],
-                        "sort": 1
-                    }
-                ],
-                "sort": 1
-            }
-        ],
-        "sort": 3
+          }
+        }
+      ],
+      "sort": 1
     }
-],
-  "env": []
+  ],
+  "env": [],
+  "dataModel": [
+    {
+      "model_id": "",
+      "name": "schemas",
+      "model_type": "folder",
+      "description": "schemas",
+      "children": [
+        {
+          "model_id": "#/components/schemas/FailUserIdReason",
+          "name": "FailUserIdReason",
+          "displayName": "FailUserIdReason",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": { "reason": { "type": "string" }, "userId": { "type": "string" } },
+            "title": "FailUserIdReason",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HAllowLoginUser",
+          "name": "HAllowLoginUser",
+          "displayName": "HAllowLoginUser",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "email": { "description": "邮箱", "type": "string" },
+              "hasBind": { "type": "boolean" },
+              "mobile": { "description": "手机号", "type": "string" },
+              "orgs": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "7cdd2f50-9eab-4629-ab83-478c488ef172": {
+                      "ref": "#/components/schemas/HOrgRelation"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["7cdd2f50-9eab-4629-ab83-478c488ef172"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HOrgRelation"
+                },
+                "type": "array"
+              },
+              "position": { "description": "岗位", "type": "string" },
+              "recordId": { "format": "int32", "type": "integer" },
+              "sourceType": {
+                "description": "允许登录类型: user_allow/orgs_allow/hds_allow",
+                "type": "string"
+              },
+              "tags": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "c7694524-13a0-40f8-8a1c-529fcd2e7a18": {
+                      "ref": "#/components/schemas/HUserTagRelation"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["c7694524-13a0-40f8-8a1c-529fcd2e7a18"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HUserTagRelation"
+                },
+                "type": "array"
+              },
+              "tenantId": { "format": "int32", "type": "integer" },
+              "ts": { "format": "date-time", "type": "string" },
+              "type": { "format": "int32", "type": "integer" },
+              "userId": { "type": "string" },
+              "userName": { "type": "string" },
+              "userOU": { "description": "部门", "type": "string" }
+            },
+            "title": "HAllowLoginUser",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HApp",
+          "name": "HApp",
+          "displayName": "HApp",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "appDesc": { "type": "string" },
+              "appEntry": { "type": "string" },
+              "appId": { "format": "int64", "type": "integer" },
+              "appName": { "type": "string" },
+              "appNamespace": { "type": "string" },
+              "canReach": { "format": "int32", "type": "integer" },
+              "cardBackend": { "type": "boolean" },
+              "connectTimeout": { "format": "int32", "type": "integer" },
+              "contextPath": { "type": "string" },
+              "corsAllow": { "type": "boolean" },
+              "dr": { "type": "boolean" },
+              "enableWebsocket": { "type": "boolean" },
+              "isFrontend": { "type": "boolean" },
+              "isInitialize": { "type": "boolean" },
+              "lastDetectTime": { "format": "date-time", "type": "string" },
+              "leader": { "type": "string" },
+              "leaderName": { "type": "string" },
+              "needAuth": { "type": "boolean" },
+              "readTimeout": { "format": "int32", "type": "integer" },
+              "rootRewrite": { "type": "boolean" },
+              "sendTimeout": { "format": "int32", "type": "integer" },
+              "serviceDomain": { "type": "string" },
+              "swaggerPath": { "type": "string" },
+              "swaggerRaw": { "type": "string" },
+              "swaggerType": { "type": "string" },
+              "tenantDefault": { "type": "boolean" },
+              "tenantId": { "format": "int64", "type": "integer" },
+              "ts": { "format": "date-time", "type": "string" },
+              "xapp": { "type": "string" },
+              "xcluster": { "type": "string" },
+              "xnamespace": { "type": "string" },
+              "xproject": { "type": "string" },
+              "xprojectName": { "type": "string" },
+              "xservice": { "type": "string" },
+              "xservicePort": { "format": "int32", "type": "integer" }
+            },
+            "title": "HApp",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HCard",
+          "name": "HCard",
+          "displayName": "HCard",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "cardId": { "format": "int64", "type": "integer" },
+              "code": { "type": "string" },
+              "codeConstructionAutomatic": { "type": "boolean" },
+              "createBy": { "type": "string" },
+              "createName": { "type": "string" },
+              "createdTime": { "format": "date-time", "type": "string" },
+              "credentialsName": { "type": "string" },
+              "enableStatus": { "type": "boolean" },
+              "fullId": { "type": "string" },
+              "gridWide": { "format": "int32", "type": "integer" },
+              "idaasId": { "type": "string" },
+              "instanceId": { "type": "string" },
+              "isButtonShow": { "type": "boolean" },
+              "isDelete": { "type": "boolean" },
+              "isInitialize": { "type": "boolean" },
+              "isNameShow": { "type": "boolean" },
+              "latestPipeLine": { "type": "string" },
+              "name": { "type": "string" },
+              "nameSpace": { "type": "string" },
+              "nameSpaceId": { "type": "string" },
+              "ossUrl": { "type": "string" },
+              "previewPictures": { "type": "string" },
+              "projectId": { "type": "string" },
+              "remark": { "type": "string" },
+              "repoProjectGitUrl": { "type": "string" },
+              "repoProjectId": { "type": "string" },
+              "repoProjectToken": { "type": "string" },
+              "showRange": { "type": "string" },
+              "status": { "format": "int32", "type": "integer" },
+              "tenantId": { "format": "int32", "type": "integer" },
+              "updateBy": { "type": "string" },
+              "updatedTime": { "format": "date-time", "type": "string" },
+              "website": { "type": "string" }
+            },
+            "title": "HCard",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HMobileMenu",
+          "name": "HMobileMenu",
+          "displayName": "HMobileMenu",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "adaptType": {
+                "description": "app原生菜单类型适配类型（苹果：ios,安卓：android）",
+                "type": "string"
+              },
+              "adaptTypeArr": {
+                "description": "app原生菜单类型适配类型（苹果：ios,安卓：android,）",
+                "items": { "type": "string" },
+                "type": "array"
+              },
+              "androidClassName": { "description": "app原生菜单类名android", "type": "string" },
+              "androidParams": {
+                "description": "android参数",
+                "items": { "type": "string" },
+                "type": "array"
+              },
+              "belongTo": {
+                "description": "属于类型；（app:应用，applets：小程序）",
+                "type": "string"
+              },
+              "bindId": {
+                "description": "关联的appid或者小程序id",
+                "format": "int64",
+                "type": "integer"
+              },
+              "btnList": {
+                "description": "按钮集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "12a2e254-4618-4cae-9d0e-112301213334": {
+                      "ref": "#/components/schemas/HMobileResourceItem"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["12a2e254-4618-4cae-9d0e-112301213334"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HMobileResourceItem"
+                },
+                "type": "array"
+              },
+              "children": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "c3e0e62c-7c87-45fc-b962-822815ef7ec1": {
+                      "ref": "#/components/schemas/HMobileMenu"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["c3e0e62c-7c87-45fc-b962-822815ef7ec1"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HMobileMenu"
+                },
+                "type": "array"
+              },
+              "choiceIcon": { "description": "选中后的菜单图标", "type": "string" },
+              "choiceNameColour": { "description": "选择后的名字颜色", "type": "string" },
+              "code": { "description": "菜单编码", "type": "string" },
+              "createBy": { "description": "创建人", "type": "string" },
+              "createTime": { "description": "创建时间", "format": "date-time", "type": "string" },
+              "fullId": { "description": "资源fullId（idaas资源资源fullId）", "type": "string" },
+              "hasChild": {
+                "description": "是否存在子资源节点",
+                "example": false,
+                "type": "boolean"
+              },
+              "icon": { "description": "菜单图标", "type": "string" },
+              "id": { "description": "IDaas 资源ID", "type": "string" },
+              "identificationId": {
+                "description": "标识id（小程序id，离线包id，网页地址，类名，页面名称）",
+                "type": "string"
+              },
+              "identificationName": {
+                "description": "标识名称（小程序名称，离线包名称，网页地址）",
+                "type": "string"
+              },
+              "iosClassName": { "description": "app原生菜单类名ios", "type": "string" },
+              "iosParams": {
+                "description": "ios参数",
+                "items": { "type": "string" },
+                "type": "array"
+              },
+              "isDelete": { "type": "boolean" },
+              "isEnable": { "description": "0-禁用；1-启用", "example": false, "type": "boolean" },
+              "isShow": { "description": "0-隐藏；1-展示", "example": false, "type": "boolean" },
+              "item": {
+                "APIPOST_REFS": {
+                  "d4bbba63-03c7-44ca-8043-76678ddccdce": {
+                    "ref": "#/components/schemas/HMobileMenu"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["d4bbba63-03c7-44ca-8043-76678ddccdce"],
+                "type": "object",
+                "ref": "#/components/schemas/HMobileMenu"
+              },
+              "level": { "description": "菜单层级", "format": "int32", "type": "integer" },
+              "menuOrder": { "description": "菜单排序", "format": "int32", "type": "integer" },
+              "name": { "description": "菜单名称", "type": "string" },
+              "nameColour": { "description": "名字颜色", "type": "string" },
+              "needFooterRender": {
+                "description": "是否展示页脚。1-展示；0-不展示",
+                "example": false,
+                "type": "boolean"
+              },
+              "panelList": {
+                "description": "面板集合",
+                "items": {
+                  "properties": {
+                    "fullId": { "description": "full id", "type": "string" },
+                    "id": { "type": "string" },
+                    "itemCode": { "type": "string" },
+                    "itemName": { "type": "string" },
+                    "parentCode": { "type": "string" },
+                    "parentId": { "description": "上级id", "type": "string" },
+                    "rawCode": { "type": "string" },
+                    "roleBind": { "type": "boolean" },
+                    "sort": { "format": "int32", "type": "integer" },
+                    "status": { "format": "int32", "type": "integer" },
+                    "tenantId": { "type": "string" },
+                    "ts": { "format": "date-time", "type": "string" },
+                    "type": {
+                      "description": "btn:按钮 ,panel:面板, list：列表, column：列",
+                      "type": "string"
+                    }
+                  },
+                  "title": "HMobileResourceItem",
+                  "type": "object",
+                  "ref": "#/components/schemas/HMobileResourceItem"
+                },
+                "type": "array"
+              },
+              "parentCode": { "description": "父级编码", "type": "string" },
+              "parentId": { "description": "IDaas 父资源ID", "type": "string" },
+              "roleBind": {
+                "description": "当返回all-role-bind-tag查询结果时，该字段有值",
+                "example": false,
+                "type": "boolean"
+              },
+              "tableList": {
+                "description": "列表集合",
+                "items": {
+                  "properties": {
+                    "fullId": { "description": "full id", "type": "string" },
+                    "id": { "type": "string" },
+                    "itemCode": { "type": "string" },
+                    "itemName": { "type": "string" },
+                    "parentCode": { "type": "string" },
+                    "parentId": { "description": "上级id", "type": "string" },
+                    "rawCode": { "type": "string" },
+                    "roleBind": { "type": "boolean" },
+                    "sort": { "format": "int32", "type": "integer" },
+                    "status": { "format": "int32", "type": "integer" },
+                    "tenantId": { "type": "string" },
+                    "ts": { "format": "date-time", "type": "string" },
+                    "type": {
+                      "description": "btn:按钮 ,panel:面板, list：列表, column：列",
+                      "type": "string"
+                    }
+                  },
+                  "title": "HMobileResourceItem",
+                  "type": "object",
+                  "ref": "#/components/schemas/HMobileResourceItem"
+                },
+                "type": "array"
+              },
+              "tenantId": { "format": "int32", "type": "integer" },
+              "type": {
+                "description": "菜单类型（applets:小程序，webPage:网页，offlinePackage离线包, protogenesis 原生，customizePage 自定义页面, menu 菜单, work 工作台）",
+                "type": "string"
+              },
+              "updateBy": { "type": "string" },
+              "updateTime": { "format": "date-time", "type": "string" },
+              "url": { "description": "url", "type": "string" }
+            },
+            "title": "HMobileMenu",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HMobileResourceItem",
+          "name": "HMobileResourceItem",
+          "displayName": "HMobileResourceItem",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "fullId": { "description": "full id", "type": "string" },
+              "id": { "type": "string" },
+              "itemCode": { "type": "string" },
+              "itemName": { "type": "string" },
+              "parentCode": { "type": "string" },
+              "parentId": { "description": "上级id", "type": "string" },
+              "rawCode": { "type": "string" },
+              "roleBind": { "type": "boolean" },
+              "sort": { "format": "int32", "type": "integer" },
+              "status": { "format": "int32", "type": "integer" },
+              "tenantId": { "type": "string" },
+              "ts": { "format": "date-time", "type": "string" },
+              "type": {
+                "description": "btn:按钮 ,panel:面板, list：列表, column：列",
+                "type": "string"
+              }
+            },
+            "title": "HMobileResourceItem",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HOrgRelation",
+          "name": "HOrgRelation",
+          "displayName": "HOrgRelation",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "dr": { "type": "boolean" },
+              "id": { "format": "int64", "type": "integer" },
+              "orgId": { "type": "string" },
+              "orgName": { "type": "string" },
+              "relationId": { "type": "string" },
+              "tenantId": { "format": "int32", "type": "integer" },
+              "ts": { "format": "date-time", "type": "string" },
+              "type": { "format": "int32", "type": "integer" }
+            },
+            "title": "HOrgRelation",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HResourceDetail",
+          "name": "HResourceDetail",
+          "displayName": "HResourceDetail",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "appId": { "format": "int64", "type": "integer" },
+              "code": { "type": "string" },
+              "customPageId": { "format": "int64", "type": "integer" },
+              "defaultShow": { "type": "boolean" },
+              "dr": { "type": "boolean" },
+              "fullId": { "type": "string" },
+              "groupId": { "format": "int64", "type": "integer" },
+              "groupResSort": { "format": "int32", "type": "integer" },
+              "icon": { "type": "string" },
+              "id": { "type": "string" },
+              "isEnable": { "type": "boolean" },
+              "isInitialize": { "type": "boolean" },
+              "isMultiplePageOpen": { "type": "boolean" },
+              "isShow": { "type": "boolean" },
+              "level": { "format": "int32", "type": "integer" },
+              "name": { "type": "string" },
+              "needFooterRender": { "type": "boolean" },
+              "parentCode": { "type": "string" },
+              "parentId": { "type": "string" },
+              "parentRawCode": { "type": "string" },
+              "primaryUrl": { "type": "string" },
+              "rawCode": { "type": "string" },
+              "redirectUrl": { "type": "string" },
+              "resOrder": { "format": "int32", "type": "integer" },
+              "roleIds": { "items": { "format": "int64", "type": "integer" }, "type": "array" },
+              "subject": { "format": "int32", "type": "integer" },
+              "tenantId": { "format": "int32", "type": "integer" },
+              "ts": { "format": "date-time", "type": "string" },
+              "type": { "type": "string" },
+              "url": { "type": "string" }
+            },
+            "required": ["code", "name", "type"],
+            "title": "HResourceDetail",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HResourceItemAddDto",
+          "name": "HResourceItemAddDto",
+          "displayName": "HResourceItemAddDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "btnList": {
+                "description": "按钮集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "a42c6512-dcec-4bb7-80b5-7e3bd0ae8411": {
+                      "ref": "#/components/schemas/按钮资源"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["a42c6512-dcec-4bb7-80b5-7e3bd0ae8411"],
+                  "type": "object",
+                  "ref": "#/components/schemas/按钮资源"
+                },
+                "type": "array"
+              },
+              "panelList": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "f9a71eec-0784-4011-ac85-1e52dccad331": {
+                      "ref": "#/components/schemas/面板资源"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["f9a71eec-0784-4011-ac85-1e52dccad331"],
+                  "type": "object",
+                  "ref": "#/components/schemas/面板资源"
+                },
+                "type": "array"
+              },
+              "resourceId": { "description": "菜单id", "type": "string" },
+              "tableList": {
+                "description": "列表集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "1339694a-0f2a-43c1-9ddb-88d42be326d8": {
+                      "ref": "#/components/schemas/列表资源"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["1339694a-0f2a-43c1-9ddb-88d42be326d8"],
+                  "type": "object",
+                  "ref": "#/components/schemas/列表资源"
+                },
+                "type": "array"
+              }
+            },
+            "title": "HResourceItemAddDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HResourceItemDto",
+          "name": "HResourceItemDto",
+          "displayName": "HResourceItemDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "btnList": {
+                "description": "按钮集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "1099475f-bb89-4931-987e-bba3bddd8df7": {
+                      "ref": "#/components/schemas/HResourceItemDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["1099475f-bb89-4931-987e-bba3bddd8df7"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HResourceItemDto"
+                },
+                "type": "array"
+              },
+              "columnList": {
+                "description": "列表的列集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "50f57390-1ab5-4613-8125-bc7e9822fdaf": {
+                      "ref": "#/components/schemas/HResourceItemDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["50f57390-1ab5-4613-8125-bc7e9822fdaf"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HResourceItemDto"
+                },
+                "type": "array"
+              },
+              "fullId": { "description": "fullId", "type": "string" },
+              "id": { "description": "资源id", "type": "string" },
+              "itemCode": { "description": "项目编码", "type": "string" },
+              "itemName": { "description": "项目名", "type": "string" },
+              "itemRawCode": { "description": "项目编码，不带租户前缀", "type": "string" },
+              "panelList": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "963459fb-f0ec-4b8e-ab80-bd856d049466": {
+                      "ref": "#/components/schemas/HResourceItemDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["963459fb-f0ec-4b8e-ab80-bd856d049466"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HResourceItemDto"
+                },
+                "type": "array"
+              },
+              "parentCode": { "description": "上级code ,idaas code", "type": "string" },
+              "parentId": { "description": "上级id 系统内id", "type": "string" },
+              "parentRawCode": { "description": "上级code ,idaas code", "type": "string" },
+              "resourceId": { "description": "菜单id", "type": "string" },
+              "roleId": { "description": "角色id", "format": "int64", "type": "integer" },
+              "sort": { "description": "序号", "format": "int32", "type": "integer" },
+              "status": {
+                "description": "启用禁用标志 0禁用 1启用 2删除",
+                "format": "int32",
+                "type": "integer"
+              },
+              "tableList": {
+                "description": "列表集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "af375c19-a4d4-478f-b5f6-36629cbe264d": {
+                      "ref": "#/components/schemas/HResourceItemDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["af375c19-a4d4-478f-b5f6-36629cbe264d"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HResourceItemDto"
+                },
+                "type": "array"
+              },
+              "tenantId": { "description": "租户id", "format": "int32", "type": "integer" },
+              "type": {
+                "description": "资源类型：btn:按钮 ,panel:面板, list：列表, column：列",
+                "type": "string"
+              }
+            },
+            "title": "HResourceItemDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HResourceItemRoleBindingDto",
+          "name": "HResourceItemRoleBindingDto",
+          "displayName": "HResourceItemRoleBindingDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "resourceItemIds": {
+                "description": "资源id集合",
+                "items": { "type": "string" },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "roleId": { "description": "角色id", "format": "int64", "type": "integer" }
+            },
+            "title": "HResourceItemRoleBindingDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HTenantBasicInfoDto",
+          "name": "HTenantBasicInfoDto",
+          "displayName": "HTenantBasicInfoDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "name": { "description": "租户名称", "type": "string" },
+              "productCode": { "description": "产品编码", "type": "string" },
+              "projectCode": { "description": "项目编码", "type": "string" },
+              "registerCluster": { "description": "注册集群", "type": "string" },
+              "shortName": { "description": "租户编码", "type": "string" },
+              "status": { "description": "租户状态", "format": "int32", "type": "integer" },
+              "superFlag": { "description": "超级租户标识", "example": false, "type": "boolean" },
+              "tenantId": { "description": "租户编号", "format": "int32", "type": "integer" },
+              "workspaceFlag": {
+                "description": "工作台租户标识",
+                "example": false,
+                "type": "boolean"
+              }
+            },
+            "title": "HTenantBasicInfoDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HTenantEnvDto",
+          "name": "HTenantEnvDto",
+          "displayName": "HTenantEnvDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "domains": {
+                "description": "开启的域名",
+                "items": { "type": "string" },
+                "type": "array"
+              },
+              "env": { "description": "环境标识", "type": "string" },
+              "orgFilterEnable": {
+                "description": "【列表】是否通过用户组织过滤",
+                "example": false,
+                "type": "boolean"
+              },
+              "status": { "description": "【列表】租户状态", "format": "int32", "type": "integer" },
+              "superFlag": {
+                "description": "【列表】超级租户标识",
+                "example": false,
+                "type": "boolean"
+              },
+              "tenantId": { "description": "租户ID", "format": "int32", "type": "integer" },
+              "workspaceFlag": {
+                "description": "【列表】工作台租户标识",
+                "example": false,
+                "type": "boolean"
+              }
+            },
+            "title": "HTenantEnvDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HTenantSuperAdminDto",
+          "name": "HTenantSuperAdminDto",
+          "displayName": "HTenantSuperAdminDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "envs": {
+                "description": "开启的环境信息",
+                "items": {
+                  "APIPOST_REFS": {
+                    "efc4a8e3-3cf0-42ed-935d-47f17df57298": {
+                      "ref": "#/components/schemas/HTenantEnvDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["efc4a8e3-3cf0-42ed-935d-47f17df57298"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HTenantEnvDto"
+                },
+                "type": "array"
+              },
+              "name": { "description": "租户名称", "type": "string" },
+              "productCode": { "description": "产品编码，只在租户列表中展示", "type": "string" },
+              "productField": { "description": "产品对应的领域", "type": "string" },
+              "projectCode": { "description": "项目编码", "type": "string" },
+              "registerCluster": { "description": "注册集群", "type": "string" },
+              "shortName": { "description": "租户编码", "type": "string" }
+            },
+            "title": "HTenantSuperAdminDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HTokenDto",
+          "name": "HTokenDto",
+          "displayName": "HTokenDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "env": {
+                "description": "hwork环境：test-测试环境，stage-预生产环境，prod-生产环境",
+                "type": "string"
+              },
+              "source": { "description": "来源：hwork或feishu", "type": "string" },
+              "token": { "description": "hwork token或飞书token", "type": "string" }
+            },
+            "required": ["source", "token"],
+            "title": "HTokenDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HUserResourceDto",
+          "name": "HUserResourceDto",
+          "displayName": "HUserResourceDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "btnList": {
+                "description": "按钮集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "f01594ec-eab8-47c4-a4ef-4b0d0147c437": {
+                      "ref": "#/components/schemas/HUserResourceItemDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["f01594ec-eab8-47c4-a4ef-4b0d0147c437"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HUserResourceItemDto"
+                },
+                "type": "array"
+              },
+              "panelList": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "16437994-eb9a-4e92-82ff-bb77eeccce8c": {
+                      "ref": "#/components/schemas/HUserResourceItemDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["16437994-eb9a-4e92-82ff-bb77eeccce8c"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HUserResourceItemDto"
+                },
+                "type": "array"
+              },
+              "tableList": {
+                "description": "列表集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "b74537e2-a8ce-4382-a0a5-1bb1d52652b2": {
+                      "ref": "#/components/schemas/HUserResourceItemDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["b74537e2-a8ce-4382-a0a5-1bb1d52652b2"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HUserResourceItemDto"
+                },
+                "type": "array"
+              }
+            },
+            "title": "HUserResourceDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HUserResourceItemDto",
+          "name": "HUserResourceItemDto",
+          "displayName": "HUserResourceItemDto",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "columnList": {
+                "description": "列表的列集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "28b40e40-9b72-4dc8-aa59-e8d7779acce8": {
+                      "ref": "#/components/schemas/HUserResourceItemDto"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["28b40e40-9b72-4dc8-aa59-e8d7779acce8"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HUserResourceItemDto"
+                },
+                "type": "array"
+              },
+              "id": { "description": "资源id", "type": "string" },
+              "itemCode": { "description": "项目编码", "type": "string" },
+              "itemName": { "description": "项目名", "type": "string" },
+              "itemRawCode": { "description": "项目编码，不带租户前缀", "type": "string" },
+              "status": {
+                "description": "启用禁用标志 0禁用 1启用 2删除",
+                "format": "int32",
+                "type": "integer"
+              }
+            },
+            "title": "HUserResourceItemDto",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/HUserTagRelation",
+          "name": "HUserTagRelation",
+          "displayName": "HUserTagRelation",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "id": { "format": "int64", "type": "integer" },
+              "tagId": { "format": "int64", "type": "integer" },
+              "tagname": { "type": "string" },
+              "tenantId": { "format": "int64", "type": "integer" },
+              "userId": { "type": "string" }
+            },
+            "title": "HUserTagRelation",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody",
+          "name": "ResultBody",
+          "displayName": "ResultBody",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": { "type": "object" },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«HApp»",
+          "name": "ResultBody«HApp»",
+          "displayName": "ResultBody«HApp»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "APIPOST_REFS": {
+                  "723205fb-948f-4cdf-8e24-32c0c1343878": { "ref": "#/components/schemas/HApp" }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["723205fb-948f-4cdf-8e24-32c0c1343878"],
+                "type": "object",
+                "ref": "#/components/schemas/HApp"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«HApp»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«HResourceDetail»",
+          "name": "ResultBody«HResourceDetail»",
+          "displayName": "ResultBody«HResourceDetail»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "APIPOST_REFS": {
+                  "37cee027-2392-4a78-b4cb-c37ba14af4ec": {
+                    "ref": "#/components/schemas/HResourceDetail"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["37cee027-2392-4a78-b4cb-c37ba14af4ec"],
+                "type": "object",
+                "ref": "#/components/schemas/HResourceDetail"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«HResourceDetail»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«HResourceItemDto»",
+          "name": "ResultBody«HResourceItemDto»",
+          "displayName": "ResultBody«HResourceItemDto»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "APIPOST_REFS": {
+                  "9f6524dd-58c3-4615-902c-4e61ae3c2be3": {
+                    "ref": "#/components/schemas/HResourceItemDto"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["9f6524dd-58c3-4615-902c-4e61ae3c2be3"],
+                "type": "object",
+                "ref": "#/components/schemas/HResourceItemDto"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«HResourceItemDto»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«HTenantBasicInfoDto»",
+          "name": "ResultBody«HTenantBasicInfoDto»",
+          "displayName": "ResultBody«HTenantBasicInfoDto»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "APIPOST_REFS": {
+                  "939da96e-0056-4a2c-8642-fd3cd6d3cf23": {
+                    "ref": "#/components/schemas/HTenantBasicInfoDto"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["939da96e-0056-4a2c-8642-fd3cd6d3cf23"],
+                "type": "object",
+                "ref": "#/components/schemas/HTenantBasicInfoDto"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«HTenantBasicInfoDto»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«List«HCard»»",
+          "name": "ResultBody«List«HCard»»",
+          "displayName": "ResultBody«List«HCard»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "79c581db-1bb0-457b-aaf2-3d2bf1edf325": { "ref": "#/components/schemas/HCard" }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["79c581db-1bb0-457b-aaf2-3d2bf1edf325"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HCard"
+                },
+                "type": "array"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«List«HCard»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«List«HMobileMenu»»",
+          "name": "ResultBody«List«HMobileMenu»»",
+          "displayName": "ResultBody«List«HMobileMenu»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "a7e822a1-a0ca-4ebf-b4e7-1d2ad7ec5bba": {
+                      "ref": "#/components/schemas/HMobileMenu"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["a7e822a1-a0ca-4ebf-b4e7-1d2ad7ec5bba"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HMobileMenu"
+                },
+                "type": "array"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«List«HMobileMenu»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«List«JSONObject»»",
+          "name": "ResultBody«List«JSONObject»»",
+          "displayName": "ResultBody«List«JSONObject»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "items": { "additionalProperties": { "type": "object" }, "type": "object" },
+                "type": "array"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«List«JSONObject»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«List«long»»",
+          "name": "ResultBody«List«long»»",
+          "displayName": "ResultBody«List«long»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": { "items": { "format": "int64", "type": "integer" }, "type": "array" },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«List«long»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«List«角色结果类»»",
+          "name": "ResultBody«List«角色结果类»»",
+          "displayName": "ResultBody«List«角色结果类»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "0dfa0939-872e-496d-b8ec-cf45a6e0d82e": {
+                      "ref": "#/components/schemas/角色结果类"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["0dfa0939-872e-496d-b8ec-cf45a6e0d82e"],
+                  "type": "object",
+                  "ref": "#/components/schemas/角色结果类"
+                },
+                "type": "array"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«List«角色结果类»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«List«资源结果类»»",
+          "name": "ResultBody«List«资源结果类»»",
+          "displayName": "ResultBody«List«资源结果类»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "2f641e6f-0ee9-4ab9-b7c5-e5853ba5bc9c": {
+                      "ref": "#/components/schemas/资源结果类"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["2f641e6f-0ee9-4ab9-b7c5-e5853ba5bc9c"],
+                  "type": "object",
+                  "ref": "#/components/schemas/资源结果类"
+                },
+                "type": "array"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«List«资源结果类»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«Map«string,object»»",
+          "name": "ResultBody«Map«string,object»»",
+          "displayName": "ResultBody«Map«string,object»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": { "type": "object" },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«Map«string,object»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«UserAllowOptResultWrapper»",
+          "name": "ResultBody«UserAllowOptResultWrapper»",
+          "displayName": "ResultBody«UserAllowOptResultWrapper»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "APIPOST_REFS": {
+                  "95f24710-273b-41ae-9d30-07b0dfe765e7": {
+                    "ref": "#/components/schemas/UserAllowOptResultWrapper"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["95f24710-273b-41ae-9d30-07b0dfe765e7"],
+                "type": "object",
+                "ref": "#/components/schemas/UserAllowOptResultWrapper"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«UserAllowOptResultWrapper»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«boolean»",
+          "name": "ResultBody«boolean»",
+          "displayName": "ResultBody«boolean»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": { "type": "boolean" },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«boolean»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«int»",
+          "name": "ResultBody«int»",
+          "displayName": "ResultBody«int»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": { "format": "int32", "type": "integer" },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«int»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«string»",
+          "name": "ResultBody«string»",
+          "displayName": "ResultBody«string»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": { "type": "string" },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«string»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«分页结果封装类«用户结果类»»",
+          "name": "ResultBody«分页结果封装类«用户结果类»»",
+          "displayName": "ResultBody«分页结果封装类«用户结果类»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "APIPOST_REFS": {
+                  "b4a54cf9-1c2f-449a-954f-7e1caa2251a8": {
+                    "ref": "#/components/schemas/分页结果封装类«用户结果类»"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["b4a54cf9-1c2f-449a-954f-7e1caa2251a8"],
+                "type": "object",
+                "ref": "#/components/schemas/分页结果封装类«用户结果类»"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«分页结果封装类«用户结果类»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«分页结果封装类«角色结果类»»",
+          "name": "ResultBody«分页结果封装类«角色结果类»»",
+          "displayName": "ResultBody«分页结果封装类«角色结果类»»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "APIPOST_REFS": {
+                  "483d7456-7e26-4647-a3c6-776c1a563329": {
+                    "ref": "#/components/schemas/分页结果封装类«角色结果类»"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["483d7456-7e26-4647-a3c6-776c1a563329"],
+                "type": "object",
+                "ref": "#/components/schemas/分页结果封装类«角色结果类»"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«分页结果封装类«角色结果类»»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/ResultBody«资源结果类»",
+          "name": "ResultBody«资源结果类»",
+          "displayName": "ResultBody«资源结果类»",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "code": { "format": "int32", "type": "integer" },
+              "data": {
+                "APIPOST_REFS": {
+                  "1ea8bd40-50fa-484d-9355-aff7860811c0": {
+                    "ref": "#/components/schemas/资源结果类"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["1ea8bd40-50fa-484d-9355-aff7860811c0"],
+                "type": "object",
+                "ref": "#/components/schemas/资源结果类"
+              },
+              "msg": { "type": "string" }
+            },
+            "title": "ResultBody«资源结果类»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/SwaggerApiVO",
+          "name": "SwaggerApiVO",
+          "displayName": "SwaggerApiVO",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "basePath": { "type": "string" },
+              "httpMethod": { "type": "string" },
+              "summary": { "type": "string" },
+              "tags": { "items": { "type": "string" }, "type": "array" },
+              "uri": { "type": "string" }
+            },
+            "title": "SwaggerApiVO",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/UserAllowOptResultWrapper",
+          "name": "UserAllowOptResultWrapper",
+          "displayName": "UserAllowOptResultWrapper",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "fail": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "1ac41429-e3f2-49ac-8727-f3b75c6404e6": {
+                      "ref": "#/components/schemas/FailUserIdReason"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["1ac41429-e3f2-49ac-8727-f3b75c6404e6"],
+                  "type": "object",
+                  "ref": "#/components/schemas/FailUserIdReason"
+                },
+                "type": "array"
+              },
+              "success": { "items": { "type": "string" }, "type": "array" }
+            },
+            "title": "UserAllowOptResultWrapper",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/分页结果封装类«用户结果类»",
+          "name": "分页结果封装类«用户结果类»",
+          "displayName": "分页结果封装类«用户结果类»",
+          "model_type": "model",
+          "description": "分页结果封装结构体",
+          "schema": {
+            "description": "分页结果封装结构体",
+            "properties": {
+              "current": { "format": "int32", "type": "integer" },
+              "pageSize": { "format": "int32", "type": "integer" },
+              "result": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "b654602e-4f9e-4fef-a581-81d7ddc7d6f4": {
+                      "ref": "#/components/schemas/用户结果类"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["b654602e-4f9e-4fef-a581-81d7ddc7d6f4"],
+                  "type": "object",
+                  "ref": "#/components/schemas/用户结果类"
+                },
+                "type": "array"
+              },
+              "total": { "format": "int64", "type": "integer" }
+            },
+            "title": "分页结果封装类«用户结果类»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/分页结果封装类«角色结果类»",
+          "name": "分页结果封装类«角色结果类»",
+          "displayName": "分页结果封装类«角色结果类»",
+          "model_type": "model",
+          "description": "分页结果封装结构体",
+          "schema": {
+            "description": "分页结果封装结构体",
+            "properties": {
+              "current": { "format": "int32", "type": "integer" },
+              "pageSize": { "format": "int32", "type": "integer" },
+              "result": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "cbdc3f72-7e5c-485e-b56f-2b2fc0454005": {
+                      "ref": "#/components/schemas/角色结果类"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["cbdc3f72-7e5c-485e-b56f-2b2fc0454005"],
+                  "type": "object",
+                  "ref": "#/components/schemas/角色结果类"
+                },
+                "type": "array"
+              },
+              "total": { "format": "int64", "type": "integer" }
+            },
+            "title": "分页结果封装类«角色结果类»",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/列表字段",
+          "name": "列表字段",
+          "displayName": "列表字段",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "id": { "description": "资源id", "type": "string" },
+              "itemCode": { "description": "项目编码", "type": "string" },
+              "itemName": { "description": "项目名", "type": "string" },
+              "status": { "description": "删除标志 2删除", "format": "int32", "type": "integer" }
+            },
+            "title": "列表字段",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/列表资源",
+          "name": "列表资源",
+          "displayName": "列表资源",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "columnList": {
+                "description": "列表的列集合",
+                "items": {
+                  "APIPOST_REFS": {
+                    "2d161942-05fa-47ac-a7a6-8cb72b21feb5": {
+                      "ref": "#/components/schemas/列表字段"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["2d161942-05fa-47ac-a7a6-8cb72b21feb5"],
+                  "type": "object",
+                  "ref": "#/components/schemas/列表字段"
+                },
+                "type": "array"
+              },
+              "id": { "description": "资源id", "type": "string" },
+              "itemCode": { "description": "项目编码", "type": "string" },
+              "itemName": { "description": "项目名", "type": "string" },
+              "status": { "description": "删除标志 2删除", "format": "int32", "type": "integer" }
+            },
+            "title": "列表资源",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/开放更新资源类",
+          "name": "开放更新资源类",
+          "displayName": "开放更新资源类",
+          "model_type": "model",
+          "description": "开放资源结构体",
+          "schema": {
+            "description": "开放资源结构体",
+            "properties": {
+              "appId": { "description": "子应用ID", "format": "int64", "type": "integer" },
+              "code": { "description": "资源编码", "type": "string" },
+              "defaultShow": {
+                "description": "是否默认显示。1-启用；0:禁用",
+                "example": false,
+                "type": "boolean"
+              },
+              "icon": { "description": "菜单的icon", "type": "string" },
+              "id": { "description": "资源id（idaas资源ID）", "type": "string" },
+              "isEnable": {
+                "description": "是否启用菜单。true-启用；false:禁用",
+                "example": false,
+                "type": "boolean"
+              },
+              "isMultiplePageOpen": {
+                "description": "页面多开开关是否打开，1-打开，0-关闭",
+                "example": false,
+                "type": "boolean"
+              },
+              "isShow": {
+                "description": "是否展示。true-展示；false:隐藏",
+                "example": false,
+                "type": "boolean"
+              },
+              "name": { "description": "资源名称", "type": "string" },
+              "needFooterRender": {
+                "description": "是否展示页脚",
+                "example": false,
+                "type": "boolean"
+              },
+              "orgs": {
+                "description": "组织列表",
+                "items": {
+                  "APIPOST_REFS": {
+                    "8cace9f1-a963-4d7b-95fe-b96d531cb10a": {
+                      "ref": "#/components/schemas/HOrgRelation"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["8cace9f1-a963-4d7b-95fe-b96d531cb10a"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HOrgRelation"
+                },
+                "type": "array"
+              },
+              "redirectUrl": { "description": "重定向url", "type": "string" },
+              "resOrder": {
+                "description": "同级菜单/按钮排序",
+                "format": "int32",
+                "type": "integer"
+              },
+              "swaggerApis": {
+                "description": "要绑定的服务-接口列表",
+                "items": {
+                  "APIPOST_REFS": {
+                    "171320e6-e12c-4ecc-b069-7b91fd4c0033": {
+                      "ref": "#/components/schemas/菜单中服务-接口结构体"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["171320e6-e12c-4ecc-b069-7b91fd4c0033"],
+                  "type": "object",
+                  "ref": "#/components/schemas/菜单中服务-接口结构体"
+                },
+                "type": "array"
+              },
+              "type": {
+                "description": "当前资源类型，可选值为：menu/inner_link/outer_link/function",
+                "type": "string"
+              },
+              "url": {
+                "description": "路由url；但类型为inner_link时，内链地址；当类型为outer_link时，外链地址",
+                "type": "string"
+              }
+            },
+            "required": ["name", "resOrder", "type"],
+            "title": "开放更新资源类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/开放角色和资源绑定类",
+          "name": "开放角色和资源绑定类",
+          "displayName": "开放角色和资源绑定类",
+          "model_type": "model",
+          "description": "开放角色和资源绑定结构体",
+          "schema": {
+            "description": "开放角色和资源绑定结构体",
+            "properties": {
+              "resourceCodes": {
+                "description": "资源CODE集合（菜单）",
+                "items": { "type": "string" },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "resourceIds": {
+                "description": "资源ID集合（菜单）",
+                "items": { "type": "string" },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "roleCode": { "description": "角色CODE", "type": "string" },
+              "roleId": { "description": "角色标识", "format": "int64", "type": "integer" }
+            },
+            "title": "开放角色和资源绑定类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/按钮资源",
+          "name": "按钮资源",
+          "displayName": "按钮资源",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "id": { "description": "资源id", "type": "string" },
+              "itemCode": { "description": "项目编码", "type": "string" },
+              "itemName": { "description": "项目名", "type": "string" },
+              "status": { "description": "删除标志 2删除", "format": "int32", "type": "integer" }
+            },
+            "title": "按钮资源",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/新增资源类",
+          "name": "新增资源类",
+          "displayName": "新增资源类",
+          "model_type": "model",
+          "description": "资源结构体",
+          "schema": {
+            "description": "资源结构体",
+            "properties": {
+              "appId": { "description": "子应用ID", "format": "int64", "type": "integer" },
+              "code": { "description": "资源编码", "type": "string" },
+              "customPageId": {
+                "description": "自定义页面id",
+                "format": "int64",
+                "type": "integer"
+              },
+              "defaultShow": {
+                "description": "是否默认显示。1-启用；0-禁用",
+                "example": false,
+                "type": "boolean"
+              },
+              "icon": { "description": "菜单的icon", "type": "string" },
+              "isEnable": {
+                "description": "是否启用菜单。true-启用；false:禁用",
+                "example": false,
+                "type": "boolean"
+              },
+              "isMultiplePageOpen": {
+                "description": "页面多开开关是否打开，1-打开，0-关闭",
+                "example": false,
+                "type": "boolean"
+              },
+              "isShow": {
+                "description": "是否展示。true-展示；false:隐藏",
+                "example": false,
+                "type": "boolean"
+              },
+              "name": { "description": "资源名称", "type": "string" },
+              "needFooterRender": {
+                "description": "是否展示页脚",
+                "example": false,
+                "type": "boolean"
+              },
+              "orgIds": {
+                "description": "资源绑定的组织ID列表",
+                "items": { "type": "string" },
+                "type": "array"
+              },
+              "orgs": {
+                "description": "资源绑定的组织列表",
+                "items": {
+                  "APIPOST_REFS": {
+                    "27a0a1c6-1d2f-48c4-afb1-222cf6a0248c": {
+                      "ref": "#/components/schemas/HOrgRelation"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["27a0a1c6-1d2f-48c4-afb1-222cf6a0248c"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HOrgRelation"
+                },
+                "type": "array"
+              },
+              "parentCode": {
+                "description": "父资源code，如果父资源为最顶级则传空字符串",
+                "type": "string"
+              },
+              "primaryUrl": {
+                "description": "超体主地址url，仅当类型为菜单时需要",
+                "type": "string"
+              },
+              "redirectUrl": { "description": "重定向url", "type": "string" },
+              "resOrder": {
+                "description": "同级菜单/按钮排序",
+                "format": "int32",
+                "type": "integer"
+              },
+              "roleIds": {
+                "description": "创建资源时，要将该资源绑定到的角色",
+                "items": { "format": "int64", "type": "integer" },
+                "type": "array"
+              },
+              "swaggerApis": {
+                "description": "要绑定的服务-接口列表",
+                "items": {
+                  "APIPOST_REFS": {
+                    "b25f8d01-fc06-4d74-93fa-a39910300d41": {
+                      "ref": "#/components/schemas/菜单中服务-接口结构体"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["b25f8d01-fc06-4d74-93fa-a39910300d41"],
+                  "type": "object",
+                  "ref": "#/components/schemas/菜单中服务-接口结构体"
+                },
+                "type": "array"
+              },
+              "ts": { "format": "date-time", "type": "string" },
+              "type": {
+                "description": "当前资源类型，可选值为：menu/inner_link/outer_link/function/custom_page",
+                "type": "string"
+              },
+              "url": {
+                "description": "路由url；但类型为inner_link时，内链地址；当类型为outer_link时，外链地址",
+                "type": "string"
+              }
+            },
+            "required": ["code", "name", "parentCode", "resOrder", "type"],
+            "title": "新增资源类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/用户结果类",
+          "name": "用户结果类",
+          "displayName": "用户结果类",
+          "model_type": "model",
+          "description": "授权用户结构体",
+          "schema": {
+            "description": "授权用户结构体",
+            "properties": {
+              "type": { "description": "类型", "format": "int32", "type": "integer" },
+              "typeName": { "description": "类型名称", "type": "string" },
+              "userId": { "description": "工号", "type": "string" },
+              "userName": { "description": "姓名", "type": "string" }
+            },
+            "title": "用户结果类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/菜单中服务-接口结构体",
+          "name": "菜单中服务-接口结构体",
+          "displayName": "菜单中服务-接口结构体",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "appId": { "description": "应用id", "format": "int64", "type": "integer" },
+              "swaggerApiVOList": {
+                "description": "选中的接口地址信息",
+                "items": {
+                  "APIPOST_REFS": {
+                    "b4450430-7288-4952-aabf-ce66c85a5657": {
+                      "ref": "#/components/schemas/SwaggerApiVO"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["b4450430-7288-4952-aabf-ce66c85a5657"],
+                  "type": "object",
+                  "ref": "#/components/schemas/SwaggerApiVO"
+                },
+                "type": "array"
+              }
+            },
+            "title": "菜单中服务-接口结构体",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/角色新增类",
+          "name": "角色新增类",
+          "displayName": "角色新增类",
+          "model_type": "model",
+          "description": "角色结构体",
+          "schema": {
+            "description": "角色结构体",
+            "properties": {
+              "applyShow": {
+                "description": "申请可见, 默认可见",
+                "example": false,
+                "type": "boolean"
+              },
+              "orgIds": {
+                "description": "组织ID列表",
+                "items": { "type": "string" },
+                "type": "array"
+              },
+              "orgs": {
+                "description": "组织列表",
+                "items": {
+                  "APIPOST_REFS": {
+                    "037edf79-5df1-4219-99b5-6b66c542addb": {
+                      "ref": "#/components/schemas/HOrgRelation"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["037edf79-5df1-4219-99b5-6b66c542addb"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HOrgRelation"
+                },
+                "type": "array"
+              },
+              "roleCode": { "description": "角色标识", "type": "string" },
+              "roleDesc": { "description": "角色描述", "type": "string" },
+              "roleName": { "description": "角色名称", "type": "string" }
+            },
+            "required": ["roleCode", "roleName"],
+            "title": "角色新增类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/角色更新类",
+          "name": "角色更新类",
+          "displayName": "角色更新类",
+          "model_type": "model",
+          "description": "角色结构体",
+          "schema": {
+            "description": "角色结构体",
+            "properties": {
+              "applyShow": { "description": "申请可见", "example": false, "type": "boolean" },
+              "id": { "description": "idaas中的角色ID", "format": "int64", "type": "integer" },
+              "orgs": {
+                "description": "组织列表",
+                "items": {
+                  "APIPOST_REFS": {
+                    "029f1081-c62b-461f-8893-312005d829d2": {
+                      "ref": "#/components/schemas/HOrgRelation"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["029f1081-c62b-461f-8893-312005d829d2"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HOrgRelation"
+                },
+                "type": "array"
+              },
+              "roleCode": { "description": "角色标识", "type": "string" },
+              "roleDesc": { "description": "角色描述", "type": "string" },
+              "roleName": { "description": "角色名称", "type": "string" }
+            },
+            "required": ["roleCode", "roleName"],
+            "title": "角色更新类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/角色类",
+          "name": "角色类",
+          "displayName": "角色类",
+          "model_type": "model",
+          "description": "角色结构体",
+          "schema": {
+            "description": "角色结构体",
+            "properties": {
+              "beginAt": { "description": "有效起始时间", "type": "string" },
+              "endAt": { "description": "有效结束时间", "type": "string" },
+              "rawCode": { "description": "角色rawCode", "type": "string" },
+              "roleId": { "description": "角色ID", "format": "int64", "type": "integer" },
+              "userId": { "description": "用户ID", "type": "string" }
+            },
+            "title": "角色类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/角色结果类",
+          "name": "角色结果类",
+          "displayName": "角色结果类",
+          "model_type": "model",
+          "description": "角色结构体",
+          "schema": {
+            "description": "角色结构体",
+            "properties": {
+              "applyShow": { "description": "申请可见", "example": false, "type": "boolean" },
+              "id": { "description": "idaas中的角色ID", "format": "int64", "type": "integer" },
+              "orgs": {
+                "description": "组织列表",
+                "items": {
+                  "APIPOST_REFS": {
+                    "9d1524a3-0013-4ec1-990f-89f44c3e2e29": {
+                      "ref": "#/components/schemas/HOrgRelation"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["9d1524a3-0013-4ec1-990f-89f44c3e2e29"],
+                  "type": "object",
+                  "ref": "#/components/schemas/HOrgRelation"
+                },
+                "type": "array"
+              },
+              "roleCode": { "description": "角色标识(带有租户前缀)", "type": "string" },
+              "roleDesc": { "description": "角色描述", "type": "string" },
+              "roleName": { "description": "角色名称", "type": "string" },
+              "roleRawCode": { "description": "角色标识(不带有租户前缀)", "type": "string" },
+              "type": {
+                "description": "绑定关系：1-未绑定、2-已绑定、3-续期（未启用） ",
+                "format": "int32",
+                "type": "integer"
+              }
+            },
+            "required": ["roleCode", "roleName", "roleRawCode"],
+            "title": "角色结果类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/资源结果类",
+          "name": "资源结果类",
+          "displayName": "资源结果类",
+          "model_type": "model",
+          "description": "资源结构体",
+          "schema": {
+            "description": "资源结构体",
+            "properties": {
+              "appEntry": { "description": "应用入口路径", "type": "string" },
+              "appId": { "description": "子应用ID", "format": "int64", "type": "integer" },
+              "appName": { "description": "应用名称", "type": "string" },
+              "appNamespace": { "description": "应用空间", "type": "string" },
+              "children": {
+                "items": {
+                  "APIPOST_REFS": {
+                    "2b772f23-c3b1-492d-8554-699709197299": {
+                      "ref": "#/components/schemas/资源结果类"
+                    }
+                  },
+                  "properties": {},
+                  "APIPOST_ORDERS": ["2b772f23-c3b1-492d-8554-699709197299"],
+                  "type": "object",
+                  "ref": "#/components/schemas/资源结果类"
+                },
+                "type": "array"
+              },
+              "code": { "description": "资源编码", "type": "string" },
+              "collectionSort": {
+                "description": "收藏菜单的排序",
+                "format": "int32",
+                "type": "integer"
+              },
+              "customPageId": {
+                "description": "自定义页面id",
+                "format": "int64",
+                "type": "integer"
+              },
+              "defaultShow": {
+                "description": "是否默认显示。1-启用；0-禁用",
+                "example": false,
+                "type": "boolean"
+              },
+              "dr": { "type": "boolean" },
+              "fullId": { "description": "资源fullId（idaas资源资源fullId）", "type": "string" },
+              "groupId": { "description": "资源分组id", "format": "int64", "type": "integer" },
+              "groupResSort": {
+                "description": "资源在分组中的排序",
+                "format": "int32",
+                "type": "integer"
+              },
+              "hasChild": {
+                "description": "是否存在子资源节点",
+                "example": false,
+                "type": "boolean"
+              },
+              "icon": { "description": "菜单的icon", "type": "string" },
+              "id": { "description": "资源id（idaas资源ID）", "type": "string" },
+              "isCollection": {
+                "description": "是否为收藏菜单",
+                "example": false,
+                "type": "boolean"
+              },
+              "isEnable": {
+                "description": "是否启用菜单。true-启用；false:禁用",
+                "example": false,
+                "type": "boolean"
+              },
+              "isInitialize": {
+                "description": "是否已经初始化，1-是，0-否",
+                "example": false,
+                "type": "boolean"
+              },
+              "isMultiplePageOpen": {
+                "description": "页面多开开关是否打开，1-打开，0-关闭",
+                "example": false,
+                "type": "boolean"
+              },
+              "isShow": {
+                "description": "是否展示。true-展示；false:隐藏",
+                "example": false,
+                "type": "boolean"
+              },
+              "item": {
+                "APIPOST_REFS": {
+                  "60e2f7fc-5d2d-4b6d-93b2-c42092add07b": {
+                    "ref": "#/components/schemas/HUserResourceDto"
+                  }
+                },
+                "properties": {},
+                "APIPOST_ORDERS": ["60e2f7fc-5d2d-4b6d-93b2-c42092add07b"],
+                "type": "object",
+                "ref": "#/components/schemas/HUserResourceDto"
+              },
+              "name": { "description": "资源名称", "type": "string" },
+              "needFooterRender": {
+                "description": "是否展示页脚",
+                "example": false,
+                "type": "boolean"
+              },
+              "newGroupId": { "format": "int64", "type": "integer" },
+              "orgIds": {
+                "description": "资源绑定的组织ID列表",
+                "items": { "type": "string" },
+                "type": "array"
+              },
+              "orgs": {
+                "description": "组织列表",
+                "items": {
+                  "properties": {
+                    "dr": { "type": "boolean" },
+                    "id": { "format": "int64", "type": "integer" },
+                    "orgId": { "type": "string" },
+                    "orgName": { "type": "string" },
+                    "relationId": { "type": "string" },
+                    "tenantId": { "format": "int32", "type": "integer" },
+                    "ts": { "format": "date-time", "type": "string" },
+                    "type": { "format": "int32", "type": "integer" }
+                  },
+                  "title": "HOrgRelation",
+                  "type": "object",
+                  "ref": "#/components/schemas/HOrgRelation"
+                },
+                "type": "array"
+              },
+              "parentCode": {
+                "description": "父资源code，如果父资源为最顶级则传空字符串",
+                "type": "string"
+              },
+              "parentId": {
+                "description": "父资源id（idaas资源ID），如果父资源为最顶级则传空字符串",
+                "type": "string"
+              },
+              "parentRawCode": { "description": "父资源code(不带租户前缀)", "type": "string" },
+              "primaryUrl": {
+                "description": "超体主地址url，仅当类型为菜单时需要",
+                "type": "string"
+              },
+              "rawCode": { "description": "资源编码(不带租户前缀)", "type": "string" },
+              "redirectUrl": { "description": "重定向url", "type": "string" },
+              "resOrder": {
+                "description": "同级菜单/按钮排序",
+                "format": "int32",
+                "type": "integer"
+              },
+              "roleBind": {
+                "description": "当返回all-role-bind-tag查询结果时，该字段有值",
+                "example": false,
+                "type": "boolean"
+              },
+              "roleIds": {
+                "description": "创建资源时，要将该资源绑定到的角色",
+                "items": { "format": "int64", "type": "integer" },
+                "type": "array"
+              },
+              "subject": {
+                "description": "菜单主题，0-明亮，1-暗黑，默认0",
+                "format": "int32",
+                "type": "integer"
+              },
+              "swaggerApis": {
+                "description": "要绑定的服务-接口列表",
+                "items": {
+                  "properties": {
+                    "appId": { "description": "应用id", "format": "int64", "type": "integer" },
+                    "swaggerApiVOList": {
+                      "description": "选中的接口地址信息",
+                      "items": {
+                        "properties": {
+                          "basePath": { "type": "string" },
+                          "httpMethod": { "type": "string" },
+                          "summary": { "type": "string" },
+                          "tags": { "items": { "type": "string" }, "type": "array" },
+                          "uri": { "type": "string" }
+                        },
+                        "title": "SwaggerApiVO",
+                        "type": "object",
+                        "ref": "#/components/schemas/SwaggerApiVO"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "title": "菜单中服务-接口结构体",
+                  "type": "object",
+                  "ref": "#/components/schemas/菜单中服务-接口结构体"
+                },
+                "type": "array"
+              },
+              "tenantId": { "format": "int32", "type": "integer" },
+              "ts": { "format": "date-time", "type": "string" },
+              "type": {
+                "description": "当前资源类型，可选值为：menu/inner_link/outer_link/function/custom_page",
+                "type": "string"
+              },
+              "url": {
+                "description": "路由url；但类型为inner_link时，内链地址；当类型为outer_link时，外链地址",
+                "type": "string"
+              }
+            },
+            "required": ["code", "name", "parentCode", "parentRawCode", "resOrder", "type"],
+            "title": "资源结果类",
+            "type": "object"
+          }
+        },
+        {
+          "model_id": "#/components/schemas/面板资源",
+          "name": "面板资源",
+          "displayName": "面板资源",
+          "model_type": "model",
+          "description": "",
+          "schema": {
+            "properties": {
+              "id": { "description": "资源id", "type": "string" },
+              "itemCode": { "description": "项目编码", "type": "string" },
+              "itemName": { "description": "项目名", "type": "string" },
+              "status": { "description": "删除标志 2删除", "format": "int32", "type": "integer" }
+            },
+            "title": "面板资源",
+            "type": "object"
+          }
+        }
+      ]
+    }
+  ]
 }

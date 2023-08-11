@@ -141,18 +141,18 @@ const fullEnv = (newJson: any, env: any) => {
   }
 }
 const createApi = (items: any[], newJson: any, pid: string = '0') => {
-  const { project_id , details } = newJson.project || {}
+  const { project_id, details } = newJson.project || {}
   items.forEach(api => {
     const { request } = api || {};
     let target_type = api?.target_type || 'api';
     let newMark = api?.mark;
-    if(details?.markList instanceof Array){
-      let old_mark = details.markList.find((item:any)=>item?.old_key === api?.mark);
-      if(old_mark != undefined && Object.prototype.toString.call(old_mark) === '[object Object]'){
-        newMark= old_mark?.key || api?.mark || 'developing'
+    if (details?.markList instanceof Array) {
+      let old_mark = details.markList.find((item: any) => item?.old_key === api?.mark);
+      if (old_mark != undefined && Object.prototype.toString.call(old_mark) === '[object Object]') {
+        newMark = old_mark?.key || api?.mark || 'developing'
       }
     }
-   
+
     let target: any = {
       update_day: parseInt(String(new Date(new Date().toLocaleDateString()).getTime() / 1000), 10),
       update_dtime: Date.parse(String(new Date())) / 1000,
@@ -168,7 +168,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       version: 1,
       target_type
     }
-    if(target_type === 'sample'){
+    if (target_type === 'sample') {
       target['example_type'] = 'api';
     }
     if (target_type == 'folder') {
@@ -384,16 +384,251 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       target['mock_url'] = '';
       target['url'] = api?.url || '';
       newJson.apis.push(target);
-      if(target_type == 'api'){
+      if (target_type == 'api') {
         createApi(api?.children || [], newJson, target.target_id);
       }
     }
   })
 }
-const fullAPis = (newJson: any, apis: any) => {
+const createApiHasParameter = (items: any[], newJson: any) => {
+  const { details } = newJson.project || {}
+  items.forEach(api => {
+    const { request } = api || {};
+    let newMark = '';
+    if (details?.markList instanceof Array) {
+      let old_mark = details.markList.find((item: any) => item?.old_key === api?.mark);
+      if (old_mark != undefined && Object.prototype.toString.call(old_mark) === '[object Object]') {
+        newMark = old_mark?.key || api?.mark || 'developing'
+      }
+    }
+    api.mark = newMark;
+    if (api?.target_type === 'sample') {
+      api['example_type'] = 'api';
+    }
+    if (api?.target_type == 'folder') {
+      api['name'] = api?.name || '新建目录';
+      api['request'] = {
+        auth: request && request.hasOwnProperty('auth') && typeof request.auth == 'object' ? request.auth : {
+          type: 'noauth',
+          kv: {
+            key: '',
+            value: '',
+          },
+          bearer: {
+            key: ''
+          },
+          basic: {
+            username: '',
+            password: ''
+          },
+          digest: {
+            username: '',
+            password: '',
+            realm: '',
+            nonce: '',
+            algorithm: '',
+            qop: '',
+            nc: '',
+            cnonce: '',
+            opaque: '',
+          },
+          hawk: {
+            authId: '',
+            authKey: '',
+            algorithm: '',
+            user: '',
+            nonce: '',
+            extraData: '',
+            app: '',
+            delegation: '',
+            timestamp: '',
+            includePayloadHash: -1,
+          },
+          awsv4: {
+            accessKey: '',
+            secretKey: '',
+            region: '',
+            service: '',
+            sessionToken: '',
+            addAuthDataToQuery: -1,
+          },
+          ntlm: {
+            username: '',
+            password: '',
+            domain: '',
+            workstation: '',
+            disableRetryRequest: 1,
+          },
+          edgegrid: {
+            accessToken: '',
+            clientToken: '',
+            clientSecret: '',
+            nonce: '',
+            timestamp: '',
+            baseURi: '',
+            headersToSign: '',
+          },
+          oauth1: {
+            consumerKey: '',
+            consumerSecret: '',
+            signatureMethod: '',
+            addEmptyParamsToSign: -1,
+            includeBodyHash: -1,
+            addParamsToHeader: -1,
+            realm: '',
+            version: '1.0',
+            nonce: '',
+            timestamp: '',
+            verifier: '',
+            callback: '',
+            tokenSecret: '',
+            token: '',
+          },
+        },
+        body: request && request.hasOwnProperty('body') && request.body instanceof Array ? request.body : [],
+        description: api?.description || '',
+        header: request && request.hasOwnProperty('header') && request.header instanceof Array ? request.header : [],
+        query: request && request.hasOwnProperty('query') && request.query instanceof Array ? request.query : [],
+      }
+      api['script'] = {
+        pre_script: request?.srcipt?.pre_script || '',
+        pre_script_switch: 1,
+        test: request?.srcipt?.test || '',
+        test_switch: 1,
+      }
+      createApiHasParameter(api?.children || [], newJson);
+    } else if (api?.target_type == 'api' || api?.target_type == 'sample') {
+      api['name'] = api?.name || '新建接口';
+      api['request'] = {
+        auth: request && request.hasOwnProperty('auth') && typeof request.auth == 'object' ? request.auth : {
+          type: 'noauth',
+          kv: {
+            key: '',
+            value: '',
+          },
+          bearer: {
+            key: ''
+          },
+          basic: {
+            username: '',
+            password: ''
+          },
+          digest: {
+            username: '',
+            password: '',
+            realm: '',
+            nonce: '',
+            algorithm: '',
+            qop: '',
+            nc: '',
+            cnonce: '',
+            opaque: '',
+          },
+          hawk: {
+            authId: '',
+            authKey: '',
+            algorithm: '',
+            user: '',
+            nonce: '',
+            extraData: '',
+            app: '',
+            delegation: '',
+            timestamp: '',
+            includePayloadHash: -1,
+          },
+          awsv4: {
+            accessKey: '',
+            secretKey: '',
+            region: '',
+            service: '',
+            sessionToken: '',
+            addAuthDataToQuery: -1,
+          },
+          ntlm: {
+            username: '',
+            password: '',
+            domain: '',
+            workstation: '',
+            disableRetryRequest: 1,
+          },
+          edgegrid: {
+            accessToken: '',
+            clientToken: '',
+            clientSecret: '',
+            nonce: '',
+            timestamp: '',
+            baseURi: '',
+            headersToSign: '',
+          },
+          oauth1: {
+            consumerKey: '',
+            consumerSecret: '',
+            signatureMethod: '',
+            addEmptyParamsToSign: -1,
+            includeBodyHash: -1,
+            addParamsToHeader: -1,
+            realm: '',
+            version: '1.0',
+            nonce: '',
+            timestamp: '',
+            verifier: '',
+            callback: '',
+            tokenSecret: '',
+            token: '',
+          },
+        },
+        body: request && request.hasOwnProperty('body') && typeof request.body == 'object' ? request.body : {
+          mode: 'none',
+          parameter: [],
+          raw: '',
+          raw_para: []
+        },
+        cookie: {
+          parameter: []
+        },
+        description: api?.request?.description || '',
+        event: {
+          pre_script: request?.event?.pre_script || '',
+          test: request?.event?.test || ''
+        },
+        header: {
+          parameter: request && request.hasOwnProperty('header') && request.header instanceof Array ? request.header : []
+        },
+        query: {
+          parameter: request && request.hasOwnProperty('query') && request.query instanceof Array ? request.query : []
+        },
+        resful: {
+          parameter: request && request.hasOwnProperty('resful') && request.resful instanceof Array ? request.resful : []
+        },
+        url: api?.url || ''
+      }
+      api['response'] = {
+        success: {
+          parameter: [],
+          raw: api?.response?.success?.raw || ''
+        },
+        error: {
+          parameter: [],
+          raw: api?.response?.error?.raw || ''
+        },
+        ...(api?.response || {})
+      }
+      api['url'] = api?.url || '';
+      if (api?.target_type == 'api') {
+        createApiHasParameter(api?.children || [], newJson);
+      }
+
+    }
+  })
+  console.log(items, 'itemsitemsitems');
+
+  newJson.apis = items;
+}
+const fullAPis = (newJson: any, apis: any, HasParameter: boolean) => {
   if (apis && apis instanceof Array && apis.length > 0) {
     newJson['apis'] = [];
-    createApi(apis, newJson, '0');
+    // 是否要加
+    HasParameter ? createApiHasParameter(apis, newJson) : createApi(apis, newJson, '0');
   }
 }
 const createModel = (items: any[], newJson: any, pid: string = '0') => {
@@ -445,7 +680,7 @@ const fullDataModel = (newJson: any, dataModel: any) => {
           if (model?.old_model_id) {
             let reg = new RegExp(model.old_model_id, 'g')
             dataModelStr = dataModelStr.replace(reg, model.model_id);
-            apisStr= apisStr.replace(reg, model.model_id);
+            apisStr = apisStr.replace(reg, model.model_id);
           }
         }
         newJson.apis = JSON.parse(apisStr);
@@ -454,13 +689,16 @@ const fullDataModel = (newJson: any, dataModel: any) => {
     }
   }
 }
-export const Module2ApiPostFull = (json: any) => {
+export const Module2ApiPostFull = (json: any, HasParameter: boolean = false) => {
   const { project, env, apis, dataModel } = json;
-  let newJson = {};
+  let newJson: any = {};
   fullProject(newJson, project);
   fullEnv(newJson, env);
-  fullAPis(newJson, apis);
+  fullAPis(newJson, apis, HasParameter);
   fullDataModel(newJson, dataModel);
+  // const api  = newJson?.apis?.find((it)=>it.name == '财务_住院授权_医生直接住院透支')
+  console.log(JSON.stringify(newJson['apis']?.find((it: any) => it.name == '财务_住院授权_医生直接住院透支')));
+
   return newJson;
 }
 
