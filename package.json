@@ -1,6 +1,6 @@
 {
   "name": "module2apipostfull",
-  "version": "0.0.37",
+  "version": "0.0.39",
   "description": "module2apipostfull",
   "main": "dist/index.js",
   "files": [
@@ -31,7 +31,7 @@
     "@babel/preset-env": "^7.12.17",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.14.5",
-    "@types/jest": "^27.5.1",
+    "@types/jest": "^29.5.3",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "autoprefixer": "^10.3.1",
