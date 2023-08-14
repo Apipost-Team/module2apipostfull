@@ -1,6 +1,6 @@
 {
   "name": "module2apipostfull",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "module2apipostfull",
   "main": "dist/index.js",
   "files": [
