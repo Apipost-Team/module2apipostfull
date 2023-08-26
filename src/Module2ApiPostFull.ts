@@ -1,6 +1,19 @@
 
 import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
+import { isArray } from 'lodash';
+
+const handleQueryGetUrl = (url:string, parameter:any) => {
+  let paramsStr = '';
+  let newUrl = url || '';
+  parameter.forEach((ite: any) => {
+    if (ite.key !== '' && ite.is_checked == 1)
+      paramsStr += `${paramsStr === '' ? '' : '&'}${ite.key}=${ite.value}`;
+  });
+  newUrl = `${newUrl.split('?')[0]}${paramsStr !== '' ? '?' : ''}${paramsStr}`;
+  return newUrl;
+};
+
 const fullProject = (newJson: any, project: any) => {
   let project_id = uuidv4();
 
@@ -384,6 +397,12 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       target['mock'] = '{}';
       target['mock_url'] = '';
       target['url'] = api?.url || '';
+
+      // 通过query重新生成url
+      if (target.url && isArray(target?.request?.query?.parameter)) {
+        const newUrl = handleQueryGetUrl(target.url, target?.request?.query?.parameter);
+        target.url = newUrl;
+      }
       newJson.apis.push(target);
       if (target_type == 'api') {
         createApi(api?.children || [], newJson, target.target_id);
@@ -668,6 +687,9 @@ const createModel = (items: any[], newJson: any, pid: string = '0') => {
     }
   })
 }
+const escapeRegExp = (str: string) => {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // Escape the special characters
+}
 const fullDataModel = (newJson: any, dataModel: any) => {
   if (dataModel && dataModel instanceof Array && dataModel.length > 0) {
     newJson['dataModel'] = [];
@@ -678,9 +700,9 @@ const fullDataModel = (newJson: any, dataModel: any) => {
         let apisStr = JSON.stringify(newJson.apis);
         for (const model of newJson.dataModel) {
           if (model?.old_model_id) {
-            let reg = new RegExp(`"${model.old_model_id}"`, 'g')
+            let reg = new RegExp(`"${escapeRegExp(model.old_model_id)}"`, 'g')
             dataModelStr = dataModelStr.replace(reg, `"${model.model_id}"`);
-            apisStr= apisStr.replace(reg, `"${model.model_id}"`);
+            apisStr = apisStr.replace(reg, `"${model.model_id}"`);
           }
         }
         newJson.apis = JSON.parse(apisStr);
