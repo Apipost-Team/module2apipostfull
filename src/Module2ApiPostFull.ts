@@ -402,6 +402,7 @@ const createApi = (items: any[], newJson: any, pid: string = '0') => {
       if (target.url && isArray(target?.request?.query?.parameter)) {
         const newUrl = handleQueryGetUrl(target.url, target?.request?.query?.parameter);
         target.url = newUrl;
+        target.request.url = newUrl;
       }
       newJson.apis.push(target);
       if (target_type == 'api') {
