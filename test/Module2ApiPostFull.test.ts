@@ -15,7 +15,7 @@ describe('works', () => {
   }
   it('Module2ApiPostFull test', () => {
     
-    console.log("Module2ApiPostFullModule2ApiPostFull",JSON.stringify(Module2ApiPostFull(swaggerV3Module,true).apis));
+    // console.log("Module2ApiPostFullModule2ApiPostFull",JSON.stringify(Module2ApiPostFull(swaggerV3Module,true).dataModel));
     expect(result).toEqual(true);
   });
 });

@@ -2,6 +2,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
 import { isArray } from 'lodash';
+import CryptoJS from 'crypto-js';
 
 const handleQueryGetUrl = (url:string, parameter:any) => {
   let paramsStr = '';
@@ -651,7 +652,7 @@ const fullAPis = (newJson: any, apis: any, HasParameter: boolean) => {
     HasParameter ? createApiHasParameter(apis, newJson) : createApi(apis, newJson, '0');
   }
 }
-const createModel = (items: any[], newJson: any, pid: string = '0') => {
+const createModel = (items: any[], newJson: any, pid: string = '0',current_project_id:string) => {
   const { project_id } = newJson.project || {};
   items.forEach(model => {
     let model_type = 'model';
@@ -662,6 +663,8 @@ const createModel = (items: any[], newJson: any, pid: string = '0') => {
         model_type = 'model';
       }
     }
+    const new_model_id = model?.model_id ? CryptoJS.MD5(current_project_id + model?.model_id).toString() : uuidv4();
+    
     let target: any = {
       update_day: parseInt(String(new Date(new Date().toLocaleDateString()).getTime() / 1000), 10),
       updated_time: Date.parse(String(new Date())) / 1000,
@@ -670,7 +673,7 @@ const createModel = (items: any[], newJson: any, pid: string = '0') => {
       parent_id: pid || '0',
       project_id,
       sort: model?.sort || -1,
-      model_id: uuidv4(),
+      model_id: new_model_id,
       model_type: model_type,
       old_model_id: model?.model_id || "",
       description: model?.description || '',
@@ -679,7 +682,7 @@ const createModel = (items: any[], newJson: any, pid: string = '0') => {
     if (model_type == 'folder') {
       target['name'] = model?.name || '新建目录';
       newJson.dataModel.push(target);
-      createModel(model?.children || [], newJson, target.model_id);
+      createModel(model?.children || [], newJson, target.model_id, current_project_id);
     } else if (model_type == 'model') {
       target['name'] = model?.name || '新建接口';
       target['display_name'] = model?.displayName || '';
@@ -691,10 +694,10 @@ const createModel = (items: any[], newJson: any, pid: string = '0') => {
 const escapeRegExp = (str: string) => {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // Escape the special characters
 }
-const fullDataModel = (newJson: any, dataModel: any) => {
+const fullDataModel = (newJson: any, dataModel: any,current_project_id:string) => {
   if (dataModel && dataModel instanceof Array && dataModel.length > 0) {
     newJson['dataModel'] = [];
-    createModel(dataModel, newJson, '0');
+    createModel(dataModel, newJson, '0',current_project_id);
     if (newJson.dataModel.length > 0) {
       try {
         let dataModelStr = JSON.stringify(newJson.dataModel);
@@ -712,13 +715,14 @@ const fullDataModel = (newJson: any, dataModel: any) => {
     }
   }
 }
-export const Module2ApiPostFull = (json: any, HasParameter: boolean = false) => {
+export const Module2ApiPostFull = (json: any, HasParameter: boolean = false,current_project_id = '') => {
   const { project, env, apis, dataModel } = json;
   let newJson: any = {};
   fullProject(newJson, project);
   fullEnv(newJson, env);
   fullAPis(newJson, apis, HasParameter);
-  fullDataModel(newJson, dataModel);
+  fullDataModel(newJson, dataModel, current_project_id);
+  
   // const api  = newJson?.apis?.find((it)=>it.name == '财务_住院授权_医生直接住院透支')
 
   return newJson;
