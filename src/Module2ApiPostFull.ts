@@ -652,8 +652,8 @@ const fullAPis = (newJson: any, apis: any, HasParameter: boolean) => {
     HasParameter ? createApiHasParameter(apis, newJson) : createApi(apis, newJson, '0');
   }
 }
-const createModel = (items: any[], newJson: any, pid: string = '0',current_project_id:string) => {
-  const { project_id } = newJson.project || {};
+const createModel = (items: any[], newJson: any, pid: string = '0') => {
+  const { project_id, name } = newJson.project || {};
   items.forEach(model => {
     let model_type = 'model';
     if (model.hasOwnProperty('model_type')) {
@@ -663,8 +663,8 @@ const createModel = (items: any[], newJson: any, pid: string = '0',current_proje
         model_type = 'model';
       }
     }
-    const new_model_id = model?.model_id ? CryptoJS.MD5(current_project_id + model?.model_id).toString() : uuidv4();
-    
+    const new_model_id = model?.model_id ? CryptoJS.MD5(name + model?.model_id).toString() : uuidv4();
+    // console.log(new_model_id,model?.model_id,name);
     let target: any = {
       update_day: parseInt(String(new Date(new Date().toLocaleDateString()).getTime() / 1000), 10),
       updated_time: Date.parse(String(new Date())) / 1000,
@@ -682,7 +682,7 @@ const createModel = (items: any[], newJson: any, pid: string = '0',current_proje
     if (model_type == 'folder') {
       target['name'] = model?.name || '新建目录';
       newJson.dataModel.push(target);
-      createModel(model?.children || [], newJson, target.model_id, current_project_id);
+      createModel(model?.children || [], newJson, target.model_id);
     } else if (model_type == 'model') {
       target['name'] = model?.name || '新建接口';
       target['display_name'] = model?.displayName || '';
@@ -694,10 +694,10 @@ const createModel = (items: any[], newJson: any, pid: string = '0',current_proje
 const escapeRegExp = (str: string) => {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // Escape the special characters
 }
-const fullDataModel = (newJson: any, dataModel: any,current_project_id:string) => {
+const fullDataModel = (newJson: any, dataModel: any) => {
   if (dataModel && dataModel instanceof Array && dataModel.length > 0) {
     newJson['dataModel'] = [];
-    createModel(dataModel, newJson, '0',current_project_id);
+    createModel(dataModel, newJson, '0');
     if (newJson.dataModel.length > 0) {
       try {
         let dataModelStr = JSON.stringify(newJson.dataModel);
@@ -715,13 +715,13 @@ const fullDataModel = (newJson: any, dataModel: any,current_project_id:string) =
     }
   }
 }
-export const Module2ApiPostFull = (json: any, HasParameter: boolean = false,current_project_id = '') => {
+export const Module2ApiPostFull = (json: any, HasParameter: boolean = false) => {
   const { project, env, apis, dataModel } = json;
   let newJson: any = {};
   fullProject(newJson, project);
   fullEnv(newJson, env);
   fullAPis(newJson, apis, HasParameter);
-  fullDataModel(newJson, dataModel, current_project_id);
+  fullDataModel(newJson, dataModel);
   
   // const api  = newJson?.apis?.find((it)=>it.name == '财务_住院授权_医生直接住院透支')
 
