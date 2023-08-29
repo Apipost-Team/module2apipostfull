@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { isArray } from 'lodash';
 import CryptoJS from 'crypto-js';
 
-const handleQueryGetUrl = (url:string, parameter:any) => {
+const handleQueryGetUrl = (url: string, parameter: any) => {
   let paramsStr = '';
   let newUrl = url || '';
   parameter.forEach((ite: any) => {
@@ -663,8 +663,15 @@ const createModel = (items: any[], newJson: any, pid: string = '0') => {
         model_type = 'model';
       }
     }
+    try {
+      const hashIndex = model?.model_id.indexOf('#');
+
+      if (hashIndex !== -1) {
+        model.model_id = model.model_id.substring(hashIndex);
+      }
+    } catch (error) {}
     const new_model_id = model?.model_id ? CryptoJS.MD5(name + model?.model_id).toString() : uuidv4();
-    // console.log(new_model_id,model?.model_id,name);
+    // console.log(new_model_id, model?.model_id, name);
     let target: any = {
       update_day: parseInt(String(new Date(new Date().toLocaleDateString()).getTime() / 1000), 10),
       updated_time: Date.parse(String(new Date())) / 1000,
@@ -715,14 +722,14 @@ const fullDataModel = (newJson: any, dataModel: any) => {
     }
   }
 }
-export const Module2ApiPostFull = (json: any, HasParameter: boolean = false) => {
+export const Module2ApiPostFull = (json: any, HasParameter: boolean = false,) => {
   const { project, env, apis, dataModel } = json;
   let newJson: any = {};
   fullProject(newJson, project);
   fullEnv(newJson, env);
   fullAPis(newJson, apis, HasParameter);
   fullDataModel(newJson, dataModel);
-  
+
   // const api  = newJson?.apis?.find((it)=>it.name == '财务_住院授权_医生直接住院透支')
 
   return newJson;
